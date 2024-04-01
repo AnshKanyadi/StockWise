@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="category_screen" extends="Group">
+  <script type="text/brightscript" uri="pkg:/components/screens/category_screen.brs" />
+  <interface>
+    <field id="category_selected"
+          type="assocarray"
+          alias="category_list.itemSelected"
+        />
+  </interface>
+  <children>
+    <Poster
+      id="backgroundImage"
+      uri="pkg:/images/stockwisepic.png"
+      translation="[0, 0]"
+      width="1920"
+      height="1080"
+    />
+    <RadioButtonList
+      id="category_list"
+      translation="[250, 700]"
+      itemSize="[400,48]"
+    >
+      <ContentNode id="categories" role="content">
+        <ContentNode title="Play"/>
+        <ContentNode title="Settings"/>
+        <ContentNode title="Credits"/>
+      </ContentNode>
+    </RadioButtonList>
+  </children>
+</component>
