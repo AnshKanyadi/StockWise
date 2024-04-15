@@ -17,13 +17,17 @@
     />
     <RadioButtonList
       id="category_list"
-      translation="[250, 700]"
-      itemSize="[400,48]"
+      translation="[580, 650]"
+      itemSize="[550,200]"
+      transparent="true"
+      text-align="center"
+      font-size="90"
+      text-font="font:LargeBoldSystemFont"
+      font-color="0xFFFFFFFF"
     >
       <ContentNode id="categories" role="content">
         <ContentNode title="Play"/>
-        <ContentNode title="Settings"/>
-        <ContentNode title="Credits"/>
+
       </ContentNode>
     </RadioButtonList>
   </children>
