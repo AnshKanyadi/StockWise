@@ -33,5 +33,12 @@
             focusable="true"
             visible="true"
         />
+        <Video
+        id="musicvideos"
+        width="1920"
+        height="1080"
+        translation="[0,0]"
+        
+/>
     </children>
 </component>
