@@ -5,7 +5,7 @@ minor_version=0
 build_version=0
 ## Channel Icons
 #### Image size for mm_icon_focus_hd: 290x218px
-mm_icon_focus_hd=pkg:/images/channel_logo_hd.png
+mm_icon_focus_hd=pkg:/images/stockwise.png
 ###  Splash Screen + Loading Screen Artwork
 #### Image sizes are splash_screen_fhd: 1920x1080px | splash_screen_hd: 1280x720px
 splash_screen_fhd=pkg:/images/splash_fhd.png
