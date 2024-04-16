@@ -27,6 +27,7 @@
     >
       <ContentNode id="categories" role="content">
         <ContentNode title="Play"/>
+        <ContentNode title="screen2"/>
 
       </ContentNode>
     </RadioButtonList>

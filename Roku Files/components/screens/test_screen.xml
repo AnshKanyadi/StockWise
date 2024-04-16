@@ -1,0 +1,37 @@
+
+<component name="test_screen" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/screens/test_screen.brs" />
+    
+    <children>
+          <Poster
+            id="123"
+            uri="pkg:/images/test.jpg"
+            translation="[700, 200]"
+            width="400"
+            height="400"
+        />
+        <Label
+         id="gameLabel" 
+         text="This is the game screen" 
+         translation="[400, 50]" 
+         />
+        <Button
+            id="button1"
+            text="one two three"
+            translation="[700, 700]"
+            width="300"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="button2"
+            text="tester button"
+            translation="[700, 750]"
+            width="300"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+    </children>
+</component>

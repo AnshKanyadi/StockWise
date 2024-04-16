@@ -8,6 +8,9 @@ function init()
     
     m.game_screen = m.top.findNode("game_screen")
     m.game_screen.visible = false
+
+    m.test_screen = m.top.findNode("test_screen")
+    m.test_screen.visible = false
     
 
     
@@ -33,5 +36,15 @@ sub onCategorySelected(obj)
         
         
        
+    end if
+
+    if m.buttonIndex = 1
+        m.center_square.visible = false
+        m.game_screen.visible = false
+        m.test_screen.visible = true
+
+        m.center_square.setFocus(false)
+        m.game_screen.setFocus(false)
+        m.test_screen.setFocus(true)
     end if
 end sub

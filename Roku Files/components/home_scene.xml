@@ -10,5 +10,9 @@
       id="game_screen"
       visible="false"
       translation="[0,0]" />
+    <test_screen
+      id="test_screen"
+      visible="false"
+      translation="[0,0]" />
 </children>
 </component>
