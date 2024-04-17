@@ -15,6 +15,7 @@ function setVideo() as void
   m.video = m.top.findNode("musicvideos")
   m.video.content = videoContent
   m.video.control = "play"
+  
 end function
 
 
