@@ -3,32 +3,62 @@
     <script type="text/brightscript" uri="pkg:/components/screens/test_screen.brs" />
     
     <children>
-          <Poster
-            id="123"
-            uri="pkg:/images/test.jpg"
-            translation="[700, 200]"
-            width="400"
-            height="400"
-        />
-        <Label
+    <Label
          id="gameLabel" 
          text="This is the game screen" 
          translation="[400, 50]" 
          />
+
+          <Poster
+            id="stock1"
+            uri="pkg:/images/applestock.jpg"
+            translation="[150, 200]"
+            width="200"
+            height="200"
+        />
+        
+        
+          <Poster
+            id="stock2"
+            uri="pkg:/images/applestock.jpg"
+            translation="[350, 200]"
+            width="200"
+            height="200"
+        />
+        
+        
+           <Poster
+            id="stock3"
+            uri="pkg:/images/applestock.jpg"
+            translation="[550, 200]"
+            width="200"
+            height="200"
+        />
+        
         <Button
-            id="button1"
-            text="one two three"
-            translation="[700, 700]"
-            width="300"
+            id="stock3a"
+            text="Samsung"
+            translation="[550, 300]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+
+          <Button
+            id="stock1a"
+            text="Apple"
+            translation="[150, 300]"
+            width="200"
             height="36"
             focusable="true"
             visible="true"
         />
         <Button
-            id="button2"
-            text="tester button"
-            translation="[700, 750]"
-            width="300"
+            id="stock2a"
+            text="Google"
+            translation="[350, 300]"
+            width="200"
             height="36"
             focusable="true"
             visible="true"
