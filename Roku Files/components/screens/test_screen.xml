@@ -1,7 +1,9 @@
 
 <component name="test_screen" extends="Group">
     <script type="text/brightscript" uri="pkg:/components/screens/test_screen.brs" />
-    
+     <interface>
+    <field id="dialog" type="node" />
+  </interface>
     <children>
     <Label
          id="gameLabel" 
@@ -11,7 +13,7 @@
 
           <Poster
             id="stock1"
-            uri="pkg:/images/applestock.jpg"
+            uri="pkg:/images/applestock.png"
             translation="[150, 200]"
             width="200"
             height="200"
@@ -20,8 +22,8 @@
         
           <Poster
             id="stock2"
-            uri="pkg:/images/applestock.jpg"
-            translation="[350, 200]"
+            uri="pkg:/images/applestock.png"
+            translation="[550, 200]"
             width="200"
             height="200"
         />
@@ -29,16 +31,39 @@
         
            <Poster
             id="stock3"
-            uri="pkg:/images/applestock.jpg"
-            translation="[550, 200]"
+            uri="pkg:/images/applestock.png"
+            translation="[950, 200]"
             width="200"
             height="200"
         />
         
+        <Poster
+            id="stock4"
+            uri="pkg:/images/applestock.png"
+            translation="[150, 700]"
+            width="200"
+            height="200"
+        />
+
+        <Poster
+            id="stock5"
+            uri="pkg:/images/applestock.png"
+            translation="[550, 700]"
+            width="200"
+            height="200"
+        />
+
+        <Poster
+            id="stock6"
+            uri="pkg:/images/applestock.png"
+            translation="[950, 700]"
+            width="200"
+            height="200"
+        />
         <Button
-            id="stock3a"
+            id="stock1a"
             text="Samsung"
-            translation="[550, 300]"
+            translation="[100, 400]"
             width="200"
             height="36"
             focusable="true"
@@ -46,18 +71,45 @@
         />
 
           <Button
-            id="stock1a"
+            id="stock2a"
             text="Apple"
-            translation="[150, 300]"
+            translation="[500, 400]"
             width="200"
             height="36"
             focusable="true"
             visible="true"
         />
         <Button
-            id="stock2a"
+            id="stock3a"
             text="Google"
-            translation="[350, 300]"
+            translation="[900, 400]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="stock4a"
+            text="Google"
+            translation="[150, 900]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="stock5a"
+            text="Google"
+            translation="[550, 900]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="stock6a"
+            text="Google"
+            translation="[950, 900]"
             width="200"
             height="36"
             focusable="true"
