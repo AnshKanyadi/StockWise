@@ -8,13 +8,13 @@
         />
   </interface>
   <children>
-    <Poster
-      id="backgroundImage"
-      uri="pkg:/images/stockwisepic.png"
-      translation="[0, 0]"
-      width="1920"
-      height="1080"
-    />
+ <Video
+        id="musicvideos"
+        width="1920"
+        height="1080"
+        translation="[0,0]"
+        
+/>
     <RadioButtonList
       id="category_list"
       translation="[580, 650]"

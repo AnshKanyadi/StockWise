@@ -13,7 +13,7 @@ function init()
     m.button1.setFocus(true)
    
     m.top.setFocus(true)
-    setVideo()
+ 
    
     
     
@@ -50,16 +50,6 @@ sub onKeyEvent(key as String, press as Boolean)
 
 end sub
 
-function setVideo() as void
-  videoContent = createObject("RoSGNode", "ContentNode")
-  videoContent.url = "pkg:/images/Untitled design.mp4"
-  videoContent.streamformat = "mp4"
-  videoContent.
-
-  m.video = m.top.findNode("musicvideos")
-  m.video.content = videoContent
-  m.video.control = "play"
-end function
 
 
 

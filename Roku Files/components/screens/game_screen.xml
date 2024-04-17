@@ -3,6 +3,7 @@
     <script type="text/brightscript" uri="pkg:/components/screens/game_screen.brs" />
     
     <children>
+       
           <Poster
             id="characterImage"
             uri="pkg:/images/designer.png"
@@ -33,12 +34,6 @@
             focusable="true"
             visible="true"
         />
-        <Video
-        id="musicvideos"
-        width="1920"
-        height="1080"
-        translation="[0,0]"
-        
-/>
+    
     </children>
 </component>
