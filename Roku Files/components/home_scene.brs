@@ -12,7 +12,7 @@ function init()
     m.test_screen = m.top.findNode("test_screen")
     m.test_screen.visible = false
     
-
+ 
     
     m.center_square.observeField("category_selected", "onCategorySelected")
     
@@ -26,7 +26,7 @@ sub onCategorySelected(obj)
 
     m.buttonIndex = obj.getData()
 
-    if m.buttonIndex = 0
+    if m.buttonIndex = 1
         m.center_square.visible = false
         m.game_screen.visible = true
 
@@ -38,7 +38,7 @@ sub onCategorySelected(obj)
        
     end if
 
-    if m.buttonIndex = 1
+    if m.buttonIndex = 0
         m.center_square.visible = false
         m.game_screen.visible = false
         m.test_screen.visible = true
@@ -46,5 +46,7 @@ sub onCategorySelected(obj)
         m.center_square.setFocus(false)
         m.game_screen.setFocus(false)
         m.test_screen.setFocus(true)
+      
     end if
 end sub
+

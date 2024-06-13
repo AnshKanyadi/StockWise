@@ -18,7 +18,7 @@
          />
         <Button
             id="button1"
-            text="What up lil bro"
+            text="Nice to meet you!"
             translation="[700, 700]"
             width="300"
             height="36"
@@ -27,7 +27,7 @@
         />
         <Button
             id="button2"
-            text="Damn you got cash"
+            text="So, what are stocks?"
             translation="[700, 750]"
             width="300"
             height="36"

@@ -4,7 +4,7 @@ function init()
     
     label = m.top.findNode("gameLabel")
     character = m.top.findNode("characterImage")
-    label.text = "Welcome to stockwise! My name is Moe Lester and im going to be your mentor!"
+    label.text = "Welcome to stockwise! My name is StockAdvisor and im going to be your mentor!"
     m.button1 = m.top.findNode("button1")
     m.button2 = m.top.findNode("button2")
 
@@ -59,16 +59,16 @@ end sub
 
 function buttontopselected()
     label = m.top.findNode("gameLabel") 
-    m.button1.text = "Wow thats so cool"
-    m.button2.text = "hello i am only 7 years old.."
-    label.text = "By the way! I have a snake in my pants (wink)"
+    m.button1.text = "I see, im glad you're well!"
+    m.button2.text = "I'm well!"
+    label.text = "How are you?"
 end function
 
 function buttonbottomselected()
     label = m.top.findNode("gameLabel") 
-    m.button1.text = "wow ur so cool"
-    m.button2.text = "i just dabbed"
-    label.text = "Yes I got cash lil bro I played stockwise"
+    m.button1.text = "I see, that helps a lot thank you"
+    m.button2.text = "i still don't get it"
+    label.text = "A stock is a share of a company! in this game, you will be simulating them!"
 end function
 
 

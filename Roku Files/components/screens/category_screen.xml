@@ -17,7 +17,7 @@
 />
     <RadioButtonList
       id="category_list"
-      translation="[580, 650]"
+      
       itemSize="[550,200]"
       transparent="true"
       text-align="center"
@@ -26,8 +26,8 @@
       font-color="0xFFFFFFFF"
     >
       <ContentNode id="categories" role="content">
-        <ContentNode title="Play"/>
-        <ContentNode title="screen2"/>
+        <ContentNode title="Market"/>
+        <ContentNode title="Tutorial"/>
 
       </ContentNode>
     </RadioButtonList>

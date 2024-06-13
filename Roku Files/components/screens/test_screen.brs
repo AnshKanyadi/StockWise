@@ -1,5 +1,4 @@
 sub init()
-    
     m.currentIndex = 0
     m.button1 = m.top.findNode("stock1a")
     m.button2 = m.top.findNode("stock2a")
@@ -13,9 +12,16 @@ sub init()
     m.button4.observeField("buttonSelected", "handleButtonClick_stock4a")
     m.button5.observeField("buttonSelected", "handleButtonClick_stock5a")
     m.button6.observeField("buttonSelected", "handleButtonClick_stock6a")
-
+    m.boughtStocks = []
 
     changeFocus(m.currentIndex)
+    m.stocktimer = m.top.findNode("stockTimer")
+    m.stocktimer.control = "start"
+    m.stocktimer.observeField("fire", "handleStockTimerEvent")
+    m.remainingMoney = 10000 ' Initialize remaining money to $10000
+    m.boughtStocksLabel = m.top.findNode("boughtStocksLabel")
+    m.boughtStocksLabel.text = "Bought Stocks:"
+    
 end sub
 
 sub onKeyEvent(key as String, press as Boolean) as Boolean
@@ -34,9 +40,7 @@ sub onKeyEvent(key as String, press as Boolean) as Boolean
 end sub
 
 sub changeFocus(index as Integer)
- 
     buttons = ["stock1a", "stock2a", "stock3a", "stock4a", "stock5a", "stock6a"]
-    
     
     for i = 0 to 5
         button = m.top.findNode(buttons[i])
@@ -49,34 +53,129 @@ sub changeFocus(index as Integer)
 end sub
 
 sub handleButtonClick_stock1a(event as Object)
-    showPopup("You clicked on stock 1.")
+    showPopup()
+    buyStock("AppleCost")
 end sub
 
 sub handleButtonClick_stock2a(event as Object)
-    showPopup("You clicked on stock 2.")
+    showPopup()
+    buyStock("FacebookCost")
 end sub
 
 sub handleButtonClick_stock3a(event as Object)
-    showPopup("You clicked on stock 3.")
+    showPopup()
+    buyStock("GoogleCost")
 end sub
 
 sub handleButtonClick_stock4a(event as Object)
-    showPopup("You clicked on stock 4.")
+    showPopup()
+    buyStock("MicrosoftCost")
 end sub
 
 sub handleButtonClick_stock5a(event as Object)
-    showPopup("You clicked on stock 5.")
+    showPopup()
+    buyStock("NetflixCost")
 end sub
 
 sub handleButtonClick_stock6a(event as Object)
-    showPopup("You clicked on stock 6.")
+    showPopup()
+    buyStock("SamsungCost")
 end sub
 
-sub showPopup(message as String)
+
+sub showPopup()
+   
+    popupLabel = CreateObject("roSGNode", "Label")
+    popupLabel.text = "Stock Bought"
     
-    dialog = CreateObject("roSGNode", "Dialog")
-    dialog.title = "Stock Clicked"
-    dialog.message = message
-    m.top.dialog = dialog
-    m.top.dialog.visible = true
+  
+    labelWidth = 200 
+    labelHeight = 50 
+    screenWidth = 1920 
+    screenHeight = 1080 
+    posX = (screenWidth - labelWidth) / 2
+    posY = (screenHeight - labelHeight) / 2
+    
+    
+    popupLabel.translation = [550, posY]
+    popupLabel.color = "0x00FF00"
+    
+    m.top.appendChild(popupLabel)
+    
+    
+    m.testtimer = m.top.findNode("testTimer")
+    m.testtimer.control = "start"
+    m.testtimer.duration = 1
+    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.popupLabel = popupLabel
 end sub
+
+sub handleTimerEvent(event as Object)
+   
+    m.top.removeChild(m.popupLabel)
+end sub
+
+sub handleStockTimerEvent(event as Object)
+  
+    updateStockPrice("AppleCost")
+    updateStockPrice("FacebookCost")
+    updateStockPrice("GoogleCost")
+    updateStockPrice("MicrosoftCost")
+    updateStockPrice("NetflixCost")
+    updateStockPrice("SamsungCost")
+end sub
+
+sub updateStockPrice(stockId as String)
+
+    stockLabel = m.top.findNode(stockId)
+    
+
+    priceText = stockLabel.text
+    
+
+    if priceText <> invalid and priceText <> "" and left(priceText, 1) = "$" then
+ 
+        numericText = mid(priceText, 2)
+        
+    
+        currentPrice = Val(numericText)
+        
+    
+        priceChange = Rnd(10) - 5 
+        
+      
+        newPrice = currentPrice + priceChange
+        if newPrice < 0 then newPrice = 0 
+ 
+        stockLabel.text = "$" + str(newPrice)
+        
+
+        if priceChange > 0 then
+  
+            stockLabel.color = "0x00FF00"
+        else if priceChange < 0 then
+
+            stockLabel.color = "0xFF0000"
+        else
+
+            stockLabel.color = "0xFFFFFF" 
+        end if
+    else
+        print "Invalid or empty price text:", priceText
+    end if
+end sub
+
+sub buyStock(stockId as String)
+
+    stockLabel = m.top.findNode(stockId)
+    priceText = stockLabel.text
+    numericText = mid(priceText, 2)
+    stockPrice = Val(numericText)
+    m.remainingMoney = m.remainingMoney - stockPrice
+    m.top.findNode("MoneyLabel").text = "$" + str(m.remainingMoney)
+    m.boughtStocks.Push(stockId)
+    m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
+
+end sub 
+
+
