@@ -34,6 +34,14 @@ sub onKeyEvent(key as String, press as Boolean) as Boolean
             m.currentIndex = (m.currentIndex - 1 + 6) mod 6
             changeFocus(m.currentIndex)
             return true
+        else if key = "up" then
+            m.currentIndex = (m.currentIndex + 3) mod 6
+            changeFocus(m.currentIndex)
+            return true
+        else if key = "down" then
+            m.currentIndex = (m.currentIndex + 3) mod 6
+            changeFocus(m.currentIndex)
+            return true
         end if
     end if
     return false
@@ -53,33 +61,28 @@ sub changeFocus(index as Integer)
 end sub
 
 sub handleButtonClick_stock1a(event as Object)
-    showPopup()
     buyStock("AppleCost")
 end sub
 
 sub handleButtonClick_stock2a(event as Object)
-    showPopup()
     buyStock("FacebookCost")
 end sub
 
 sub handleButtonClick_stock3a(event as Object)
-    showPopup()
     buyStock("GoogleCost")
 end sub
 
 sub handleButtonClick_stock4a(event as Object)
-    showPopup()
     buyStock("MicrosoftCost")
 end sub
 
 sub handleButtonClick_stock5a(event as Object)
-    showPopup()
     buyStock("NetflixCost")
 end sub
 
 sub handleButtonClick_stock6a(event as Object)
-    showPopup()
     buyStock("SamsungCost")
+    
 end sub
 
 
@@ -171,11 +174,29 @@ sub buyStock(stockId as String)
     priceText = stockLabel.text
     numericText = mid(priceText, 2)
     stockPrice = Val(numericText)
-    m.remainingMoney = m.remainingMoney - stockPrice
-    m.top.findNode("MoneyLabel").text = "$" + str(m.remainingMoney)
-    m.boughtStocks.Push(stockId)
-    m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
+
+    if stockPrice < m.remainingMoney then
+        m.remainingMoney = m.remainingMoney - stockPrice
+        m.top.findNode("MoneyLabel").text = "$" + str(m.remainingMoney)
+        m.boughtStocks.Push(stockId)
+        m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
+        showPopup()
+
+    else
+        popupLabel = CreateObject("roSGNode", "Label")
+        popupLabel.text = "You need more money"
+
+        labelWidth = 200 
+        labelHeight = 50 
+        screenWidth = 1920 
+        screenHeight = 1080 
+        posX = (screenWidth - labelWidth) / 2
+        posY = (screenHeight - labelHeight) / 2
+        
+        
+        popupLabel.translation = [550, posY]
+        popupLabel.color = "#0EB39F"
+    end if
 
 end sub 
-
 

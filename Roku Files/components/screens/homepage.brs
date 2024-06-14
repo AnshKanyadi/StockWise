@@ -14,7 +14,7 @@ function init()
 
 end function
 
-function setVideo() as void
+function setVideo() as void 
   videoContent = createObject("RoSGNode", "ContentNode")
   videoContent.url = "pkg:/images/StockWise.mp4"
   videoContent.streamformat = "mp4"
