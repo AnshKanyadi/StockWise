@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="homepage" extends="Group">
+  <script type="text/brightscript" uri="pkg:/components/screens/homepage.brs" />
+  <interface>
+    <field id="category_selected"
+          type="assocarray"
+          alias="category_list.itemSelected"
+        />
+  </interface>
+  <children>
+ <Video
+        id="musicvideos"
+        width="1920"
+        height="1080"
+        translation="[0,0]"
+        
+/>
+    <RadioButtonList
+      id="category_list"
+      
+      itemSize="[550,200]"
+      transparent="true"
+      text-align="center"
+      font-size="90"
+      text-font="font:LargeBoldSystemFont"
+      font-color="0xFFFFFFFF"
+    >
+      <ContentNode id="categories" role="content">
+        <ContentNode title="View Market"/>
+        <ContentNode title="Take a Tour"/>
+
+      </ContentNode>
+    </RadioButtonList>
+  </children>
+</component>

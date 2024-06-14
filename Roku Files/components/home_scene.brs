@@ -2,15 +2,15 @@ function init()
     ? "[home_scene] init"
     
     
-    m.center_square = m.top.findNode("category_screen")
+    m.center_square = m.top.findNode("homepage")
     m.center_square.setFocus(true)
 
     
+    m.tutorial = m.top.findNode("tutorial")
+    m.tutorial.visible = false
+
     m.game_screen = m.top.findNode("game_screen")
     m.game_screen.visible = false
-
-    m.test_screen = m.top.findNode("test_screen")
-    m.test_screen.visible = false
     
  
     
@@ -28,10 +28,10 @@ sub onCategorySelected(obj)
 
     if m.buttonIndex = 1
         m.center_square.visible = false
-        m.game_screen.visible = true
+        m.tutorial.visible = true
 
         m.center_square.setFocus(false)
-        m.game_screen.setFocus(true)
+        m.tutorial.setFocus(true)
 
         
         
@@ -40,12 +40,12 @@ sub onCategorySelected(obj)
 
     if m.buttonIndex = 0
         m.center_square.visible = false
-        m.game_screen.visible = false
-        m.test_screen.visible = true
+        m.tutorial.visible = false
+        m.game_screen.visible = true
 
         m.center_square.setFocus(false)
-        m.game_screen.setFocus(false)
-        m.test_screen.setFocus(true)
+        m.tutorial.setFocus(false)
+        m.game_screen.setFocus(true)
       
     end if
 end sub

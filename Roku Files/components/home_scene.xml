@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="home_scene" extends="Scene" initialFocus = "category_screen">
+<component name="home_scene" extends="Scene" initialFocus = "homepage">
   <script type="text/brightscript" uri="pkg:/components/home_scene.brs" />
 <children>
-     <category_screen
-      id="category_screen"
+     <homepage
+      id="homepage"
       visible="true"
+      translation="[0,0]" />
+    <tutorial
+      id="tutorial"
+      visible="false"
       translation="[0,0]" />
     <game_screen
       id="game_screen"
-      visible="false"
-      translation="[0,0]" />
-    <test_screen
-      id="test_screen"
       visible="false"
       translation="[0,0]" />
  
