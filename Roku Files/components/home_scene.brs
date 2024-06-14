@@ -2,8 +2,8 @@ function init()
     ? "[home_scene] init"
     
     
-    m.center_square = m.top.findNode("homepage")
-    m.center_square.setFocus(true)
+    m.home_screen = m.top.findNode("homepage")
+    m.home_screen.setFocus(true)
 
     
     m.tutorial = m.top.findNode("tutorial")
@@ -14,7 +14,7 @@ function init()
     
  
     
-    m.center_square.observeField("category_selected", "onCategorySelected")
+    m.home_screen.observeField("category_selected", "onCategorySelected")
     
 	
     m.buttonIndex = -1
@@ -27,10 +27,10 @@ sub onCategorySelected(obj)
     m.buttonIndex = obj.getData()
 
     if m.buttonIndex = 1
-        m.center_square.visible = false
+        m.home_screen.visible = false
         m.tutorial.visible = true
 
-        m.center_square.setFocus(false)
+        m.home_screen.setFocus(false)
         m.tutorial.setFocus(true)
 
         
@@ -39,11 +39,11 @@ sub onCategorySelected(obj)
     end if
 
     if m.buttonIndex = 0
-        m.center_square.visible = false
+        m.home_screen.visible = false
         m.tutorial.visible = false
         m.game_screen.visible = true
 
-        m.center_square.setFocus(false)
+        m.home_screen.setFocus(false)
         m.tutorial.setFocus(false)
         m.game_screen.setFocus(true)
       
