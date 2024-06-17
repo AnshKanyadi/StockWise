@@ -34,6 +34,14 @@ sub onKeyEvent(key as String, press as Boolean) as Boolean
             m.currentIndex = (m.currentIndex - 1 + 6) mod 6
             changeFocus(m.currentIndex)
             return true
+        else if key = "up" then
+            m.currentIndex = (m.currentIndex + 3) mod 6
+            changeFocus(m.currentIndex)
+            return true
+        else if key = "down" then
+            m.currentIndex = (m.currentIndex + 3) mod 6
+            changeFocus(m.currentIndex)
+            return true
         end if
     end if
     return false
@@ -53,32 +61,26 @@ sub changeFocus(index as Integer)
 end sub
 
 sub handleButtonClick_stock1a(event as Object)
-    showPopup()
     buyStock("AppleCost")
 end sub
 
 sub handleButtonClick_stock2a(event as Object)
-    showPopup()
     buyStock("FacebookCost")
 end sub
 
 sub handleButtonClick_stock3a(event as Object)
-    showPopup()
     buyStock("GoogleCost")
 end sub
 
 sub handleButtonClick_stock4a(event as Object)
-    showPopup()
     buyStock("MicrosoftCost")
 end sub
 
 sub handleButtonClick_stock5a(event as Object)
-    showPopup()
     buyStock("NetflixCost")
 end sub
 
 sub handleButtonClick_stock6a(event as Object)
-    showPopup()
     buyStock("SamsungCost")
 end sub
 
@@ -165,17 +167,49 @@ sub updateStockPrice(stockId as String)
     end if
 end sub
 
+sub showBadPopup()
+   
+    popupbadLabel = CreateObject("roSGNode", "Label")
+    popupbadLabel.text = "You need more money to buy this stock"
+    
+  
+    labelWidth2 = 200 
+    labelHeight2 = 50 
+    screenWidth2 = 1920 
+    screenHeight2 = 1080 
+    posX2 = (screenWidth2 - labelWidth2) / 2
+    posY2 = (screenHeight2 - labelHeight2) / 2
+    
+    
+    popupbadLabel.translation = [450, posY2]
+    popupbadLabel.color = "0xFF0000"
+    
+    m.top.appendChild(popupbadLabel)
+    
+    
+    m.testtimer.control = "start"
+    m.testtimer.duration = 1
+    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.popupLabel = popupbadLabel
+end sub
+
 sub buyStock(stockId as String)
 
     stockLabel = m.top.findNode(stockId)
     priceText = stockLabel.text
     numericText = mid(priceText, 2)
     stockPrice = Val(numericText)
-    m.remainingMoney = m.remainingMoney - stockPrice
-    m.top.findNode("MoneyLabel").text = "$" + str(m.remainingMoney)
-    m.boughtStocks.Push(stockId)
-    m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
+    if stockPrice < m.remainingMoney then
+        m.remainingMoney = m.remainingMoney - stockPrice
+        m.top.findNode("MoneyLabel").text = "$" + str(m.remainingMoney)
+        m.boughtStocks.Push(stockId)
+        m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
+        showPopup()
+    else
+        showBadPopup()
+    end if
 
 end sub 
+
 
 
