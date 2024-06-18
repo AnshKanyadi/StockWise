@@ -46,12 +46,9 @@ sub onCategorySelected(obj)
         m.home_screen.setFocus(false)
         m.tutorial.setFocus(false)
         m.game_screen.setFocus(true)
-      
+
     end if
 end sub
-
-<<<<<<< Updated upstream
-=======
 function OnKeyEvent(key as String, press as Boolean) as Boolean
     result = false
     if press
@@ -85,4 +82,3 @@ function OnKeyEvent(key as String, press as Boolean) as Boolean
     ' or false if it did not handle the event.
     'return result
 end function
->>>>>>> Stashed changes

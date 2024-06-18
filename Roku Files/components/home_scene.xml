@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="home_scene" extends="Scene" initialFocus = "homepage">
   <script type="text/brightscript" uri="pkg:/components/home_scene.brs" />
-<<<<<<< Updated upstream
-=======
   <script type="text/brightscript" uri="pkg:/components/screens/ScreenStackLogic.brs" />
-
-
->>>>>>> Stashed changes
-<children>
+  <children>
      <homepage
       id="homepage"
       visible="true"
@@ -20,6 +15,5 @@
       id="game_screen"
       visible="false"
       translation="[0,0]" />
- 
-</children>
+  </children> 
 </component>
