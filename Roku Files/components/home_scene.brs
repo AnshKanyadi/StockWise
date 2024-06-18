@@ -50,3 +50,39 @@ sub onCategorySelected(obj)
     end if
 end sub
 
+<<<<<<< Updated upstream
+=======
+function OnKeyEvent(key as String, press as Boolean) as Boolean
+    result = false
+    if press
+        if key = "back"
+            if m.game_screen.visible or m.tutorial.visible
+                m.game_screen.visible = false
+                m.tutorial.visible = false
+                m.center_square.visible = true
+
+                'm.game_screen.setFocus(false)
+                'm.tutorial.setFocus(false)
+                m.center_square.setFocus(true)
+
+                result = true
+            end if
+        end if
+    end if
+    return result
+
+    'result = false
+    'if press
+    '    if key = "back"
+    '        numberOfScreens = m.screenStack.Count()
+    '       if numberOfScreens > 1
+    '            CloseScreen(invalid)
+    '            result = true
+    '        end if
+    '    end if
+    'end if
+    ' The OnKeyEvent() function must return true if the component handled the event,
+    ' or false if it did not handle the event.
+    'return result
+end function
+>>>>>>> Stashed changes
