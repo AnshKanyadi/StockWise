@@ -146,35 +146,123 @@
             focusable="true"
             visible="true"
         />
+
+        <Button
+            id="stock1sell"
+            text="Sell"
+            translation="[100, 475]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="stock2sell"
+            text="Sell"
+            translation="[500, 475]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="stock3sell"
+            text="Sell"
+            translation="[900, 475]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="stock4sell"
+            text="Sell"
+            translation="[150, 975]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="stock5sell"
+            text="Sell"
+            translation="[550, 975]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="stock6sell"
+            text="Sell"
+            translation="[950, 975]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+
          <Label
          id="AppleCost" 
          text="$783" 
-         translation="[150, 125]" 
+         translation="[195, 135]" 
          />
           <Label
          id="FacebookCost" 
          text="$246" 
-         translation="[550, 125]" 
+         translation="[595, 135]" 
          />
           <Label
          id="GoogleCost" 
          text="$572" 
-         translation="[950, 125]" 
+         translation="[995, 135]" 
          />
           <Label
          id="MicrosoftCost" 
          text="$145" 
-         translation="[150, 625]" 
+         translation="[195, 635]" 
          />
           <Label
          id="NetflixCost" 
          text="$212" 
-         translation="[550, 625]" 
+         translation="[595, 635]" 
          />
           <Label
          id="SamsungCost" 
          text="$73" 
-         translation="[950, 625]" 
+         translation="[995, 635]" 
          />
+
+        <Label
+         id="AppleNum" 
+         text="Apple  x" 
+         translation="[1450, 650]" 
+         />
+         <Label
+         id="FacebookNum" 
+         text="Facebook  x"
+         translation="[1450, 700]" 
+         />
+         <Label
+         id="GoogleNum" 
+         text="Google  x" 
+         translation="[1450, 750]" 
+         />
+         <Label
+         id="MicrosoftNum" 
+         text="Microsoft  x" 
+         translation="[1450, 800]" 
+         />
+         <Label
+         id="NetflixNum" 
+         text="Netflix  x" 
+         translation="[1450, 850]" 
+         />
+         <Label
+         id="SamsungNum" 
+         text="Samsung  x" 
+         translation="[1450, 900]" 
+         />
+
     </children>
 </component>

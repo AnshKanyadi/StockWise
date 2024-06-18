@@ -12,7 +12,27 @@ sub init()
     m.button4.observeField("buttonSelected", "handleButtonClick_stock4a")
     m.button5.observeField("buttonSelected", "handleButtonClick_stock5a")
     m.button6.observeField("buttonSelected", "handleButtonClick_stock6a")
-    m.boughtStocks = []
+
+    m.buttonS1 = m.top.findNode("stock1sell")
+    m.buttonS2 = m.top.findNode("stock2sell")
+    m.buttonS3 = m.top.findNode("stock3sell")
+    m.buttonS4 = m.top.findNode("stock4sell")
+    m.buttonS5 = m.top.findNode("stock5sell")
+    m.buttonS6 = m.top.findNode("stock6sell")
+
+    m.buttonS1.observeField("buttonSelected", "handleButtonClick_stock1sell")
+    m.buttonS2.observeField("buttonSelected", "handleButtonClick_stock2sell")
+    m.buttonS3.observeField("buttonSelected", "handleButtonClick_stock3sell")
+    m.buttonS4.observeField("buttonSelected", "handleButtonClick_stock4sell")
+    m.buttonS5.observeField("buttonSelected", "handleButtonClick_stock5sell")
+    m.buttonS6.observeField("buttonSelected", "handleButtonClick_stock6sell")
+
+    m.boughtsell1 = 0
+    m.boughtsell2 = 0
+    m.boughtsell3 = 0
+    m.boughtsell4 = 0
+    m.boughtsell5 = 0
+    m.boughtsell6 = 0
 
     changeFocus(m.currentIndex)
     m.stocktimer = m.top.findNode("stockTimer")
@@ -21,25 +41,33 @@ sub init()
     m.remainingMoney = 10000 ' Initialize remaining money to $10000
     m.boughtStocksLabel = m.top.findNode("boughtStocksLabel")
     m.boughtStocksLabel.text = "Bought Stocks:"
-    
+
+    m.boughtStocks1Label = m.top.findNode("AppleNum")
+    m.boughtStocks2Label = m.top.findNode("FacebookNum")
+    m.boughtStocks3Label = m.top.findNode("GoogleNum")
+    m.boughtStocks4Label = m.top.findNode("MicrosoftNum")
+    m.boughtStocks5Label = m.top.findNode("NetflixNum")
+    m.boughtStocks6Label = m.top.findNode("SamsungNum")
+    updateList()
+
 end sub
 
 sub onKeyEvent(key as String, press as Boolean) as Boolean
     if press then
         if key = "right" then
-            m.currentIndex = (m.currentIndex + 1) mod 6
+            m.currentIndex = (m.currentIndex + 1) mod 12
             changeFocus(m.currentIndex)
             return true
         else if key = "left" then
-            m.currentIndex = (m.currentIndex - 1 + 6) mod 6
+            m.currentIndex = (m.currentIndex - 1 + 12) mod 12
             changeFocus(m.currentIndex)
             return true
         else if key = "up" then
-            m.currentIndex = (m.currentIndex + 3) mod 6
+            m.currentIndex = (m.currentIndex - 3 + 12) mod 12
             changeFocus(m.currentIndex)
             return true
         else if key = "down" then
-            m.currentIndex = (m.currentIndex + 3) mod 6
+            m.currentIndex = (m.currentIndex + 3) mod 12
             changeFocus(m.currentIndex)
             return true
         end if
@@ -48,9 +76,9 @@ sub onKeyEvent(key as String, press as Boolean) as Boolean
 end sub
 
 sub changeFocus(index as Integer)
-    buttons = ["stock1a", "stock2a", "stock3a", "stock4a", "stock5a", "stock6a"]
+    buttons = ["stock1a", "stock2a", "stock3a", "stock1sell", "stock2sell", "stock3sell", "stock4a", "stock5a","stock6a","stock4sell","stock5sell","stock6sell"]
     
-    for i = 0 to 5
+    for i = 0 to 11
         button = m.top.findNode(buttons[i])
         if i = index then
             button.setFocus(true)
@@ -167,6 +195,39 @@ sub updateStockPrice(stockId as String)
     end if
 end sub
 
+sub updateList()
+    if m.boughtStocks1Label <> invalid
+        m.boughtStocks1Label.text = m.boughtStocks1Label.text + str(m.boughtsell1)
+    else
+        print "boughtStocks1Label node not found."
+    end if
+    if m.boughtStocks2Label <> invalid
+        m.boughtStocks2Label.text = m.boughtStocks2Label.text + str(m.boughtsell2)
+    else
+        print "boughtStocks2Label node not found."
+    end if
+    if m.boughtStocks3Label <> invalid
+        m.boughtStocks3Label.text = m.boughtStocks3Label.text + str(m.boughtsell3)
+    else
+        print "boughtStocks3Label node not found."
+    end if
+    if m.boughtStocks4Label <> invalid
+        m.boughtStocks4Label.text = m.boughtStocks4Label.text + str(m.boughtsell4)
+    else
+        print "boughtStocks4Label node not found."
+    end if
+    if m.boughtStocks5Label <> invalid
+        m.boughtStocks5Label.text = m.boughtStocks5Label.text + str(m.boughtsell5)
+    else
+        print "boughtStocks5Label node not found."
+    end if
+    if m.boughtStocks6Label <> invalid
+        m.boughtStocks6Label.text = m.boughtStocks6Label.text + str(m.boughtsell6)
+    else
+        print "boughtStocks6Label node not found."
+    end if
+end sub
+
 sub showBadPopup()
    
     popupbadLabel = CreateObject("roSGNode", "Label")
@@ -193,21 +254,73 @@ sub showBadPopup()
     m.popupLabel = popupbadLabel
 end sub
 
+sub sellPopup()
+   
+    popupSellLabel = CreateObject("roSGNode", "Label")
+    popupSellLabel.text = "Sold Stock"
+    
+  
+    labelWidth3 = 200 
+    labelHeight3 = 50 
+    screenWidth3 = 1920 
+    screenHeight3 = 1080 
+    posX3 = (screenWidth3 - labelWidth3) / 2
+    posY3 = (screenHeight3 - labelHeight3) / 2
+    
+    
+    popupSellLabel.translation = [450, posY3]
+    popupSellLabel.color = "0xFF0000"
+    
+    m.top.appendChild(popupSellLabel)
+    
+    
+    m.testtimer.control = "start"
+    m.testtimer.duration = 1
+    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.popupLabel = popupSellLabel
+end sub
+
 sub buyStock(stockId as String)
 
-    stockLabel = m.top.findNode(stockId)
-    priceText = stockLabel.text
-    numericText = mid(priceText, 2)
-    stockPrice = Val(numericText)
-    if stockPrice < m.remainingMoney then
-        m.remainingMoney = m.remainingMoney - stockPrice
-        m.top.findNode("MoneyLabel").text = "$" + str(m.remainingMoney)
-        m.boughtStocks.Push(stockId)
-        m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
-        showPopup()
-    else
-        showBadPopup()
-    end if
+        stockLabel = m.top.findNode(stockId)
+        priceText = stockLabel.text
+        
+        numericText = mid(priceText, 2)
+        stockPrice = Val(numericText)
+        
+        if stockPrice < m.remainingMoney then
+            m.remainingMoney = m.remainingMoney - stockPrice
+            moneyLabel = m.top.findNode("MoneyLabel")
+            
+            if stockId = "AppleCost" then
+                m.boughtsell1 = m.boughtsell1 + 1
+            else if stockId = "FacebookCost" then
+                m.boughtsell2 = m.boughtsell2 + 1
+            else if stockId = "GoogleCost" then
+                m.boughtsell3 = m.boughtsell3 + 1
+            else if stockId = "MicrosoftCost" then
+                m.boughtsell4 = m.boughtsell4 + 1
+            else if stockId = "NetflixCost" then
+                m.boughtsell5 = m.boughtsell5 + 1
+            else if stockId = "SamsungCost" then
+                m.boughtsell6 = m.boughtsell6 + 1
+            end if
+            updateList()
+
+            if moneyLabel <> invalid then
+                moneyLabel.text = "$" + str(m.remainingMoney)
+            else
+                print "MoneyLabel node not found."
+            end if
+            
+            m.boughtStocks.Push(stockId)
+            m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
+            showPopup()
+
+            
+        else
+            showBadPopup()
+        end if
 
 end sub 
 
