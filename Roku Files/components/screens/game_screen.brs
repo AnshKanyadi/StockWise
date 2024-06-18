@@ -96,7 +96,7 @@ sub showPopup()
     screenWidth = 1920 
     screenHeight = 1080 
     posX = (screenWidth - labelWidth) / 2
-    posY = (screenHeight - labelHeight) / 2
+    posY = ((screenHeight - labelHeight) / 2) + 50
     
     
     popupLabel.translation = [550, posY]
@@ -167,6 +167,42 @@ sub updateStockPrice(stockId as String)
     end if
 end sub
 
+<<<<<<< Updated upstream
+=======
+sub updateList()
+    if m.boughtStocks1Label <> invalid
+        m.boughtStocks1Label.text = "Apple  x" + str(m.boughtsell1)
+    else
+        print "boughtStocks1Label node not found."
+    end if
+    if m.boughtStocks2Label <> invalid
+        m.boughtStocks2Label.text = "Facebook  x" + str(m.boughtsell2)
+    else
+        print "boughtStocks2Label node not found."
+    end if
+    if m.boughtStocks3Label <> invalid
+        m.boughtStocks3Label.text = "Google  x" + str(m.boughtsell3)
+    else
+        print "boughtStocks3Label node not found."
+    end if
+    if m.boughtStocks4Label <> invalid
+        m.boughtStocks4Label.text = "Microsoft  x" + str(m.boughtsell4)
+    else
+        print "boughtStocks4Label node not found."
+    end if
+    if m.boughtStocks5Label <> invalid
+        m.boughtStocks5Label.text = "Netflix  x" + str(m.boughtsell5)
+    else
+        print "boughtStocks5Label node not found."
+    end if
+    if m.boughtStocks6Label <> invalid
+        m.boughtStocks6Label.text = "Samsung  x" + str(m.boughtsell6)
+    else
+        print "boughtStocks6Label node not found."
+    end if
+end sub
+
+>>>>>>> Stashed changes
 sub showBadPopup()
    
     popupbadLabel = CreateObject("roSGNode", "Label")
@@ -178,7 +214,7 @@ sub showBadPopup()
     screenWidth2 = 1920 
     screenHeight2 = 1080 
     posX2 = (screenWidth2 - labelWidth2) / 2
-    posY2 = (screenHeight2 - labelHeight2) / 2
+    posY2 = ((screenHeight2 - labelHeight2) / 2) + 50
     
     
     popupbadLabel.translation = [450, posY2]
@@ -193,6 +229,7 @@ sub showBadPopup()
     m.popupLabel = popupbadLabel
 end sub
 
+<<<<<<< Updated upstream
 sub buyStock(stockId as String)
 
     stockLabel = m.top.findNode(stockId)
@@ -208,6 +245,74 @@ sub buyStock(stockId as String)
     else
         showBadPopup()
     end if
+=======
+sub sellPopup()
+   
+    popupSellLabel = CreateObject("roSGNode", "Label")
+    popupSellLabel.text = "Sold Stock"
+    
+  
+    labelWidth3 = 200 
+    labelHeight3 = 50 
+    screenWidth3 = 1920 
+    screenHeight3 = 1080 
+    posX3 = (screenWidth3 - labelWidth3) / 2
+    posY3 = ((screenHeight3 - labelHeight3) / 2) + 50
+    
+    
+    popupSellLabel.translation = [450, posY3]
+    popupSellLabel.color = "0xFF0000"
+    
+    m.top.appendChild(popupSellLabel)
+    
+    
+    m.testtimer.control = "start"
+    m.testtimer.duration = 1
+    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.popupLabel = popupSellLabel
+end sub
+
+sub buyStock(stockId as String)
+
+        stockLabel = m.top.findNode(stockId)
+        priceText = stockLabel.text
+        
+        numericText = mid(priceText, 2)
+        stockPrice = Val(numericText)
+        
+        if stockPrice < m.remainingMoney then
+            m.remainingMoney = m.remainingMoney - stockPrice
+            moneyLabel = m.top.findNode("MoneyLabel")
+
+            if stockId = "AppleCost" then
+                m.boughtsell1 = m.boughtsell1 + 1
+            else if stockId = "FacebookCost" then
+                m.boughtsell2 = m.boughtsell2 + 1
+            else if stockId = "GoogleCost" then
+                m.boughtsell3 = m.boughtsell3 + 1
+            else if stockId = "MicrosoftCost" then
+                m.boughtsell4 = m.boughtsell4 + 1
+            else if stockId = "NetflixCost" then
+                m.boughtsell5 = m.boughtsell5 + 1
+            else if stockId = "SamsungCost" then
+                m.boughtsell6 = m.boughtsell6 + 1
+            end if
+            updateList()
+
+            if moneyLabel <> invalid then
+                moneyLabel.text = "$" + str(m.remainingMoney)
+            else
+                print "MoneyLabel node not found."
+            end if
+            
+            m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
+            showPopup()
+
+            
+        else
+            showBadPopup()
+        end if
+>>>>>>> Stashed changes
 
 end sub 
 
