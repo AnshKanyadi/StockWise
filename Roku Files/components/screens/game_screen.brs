@@ -12,7 +12,27 @@ sub init()
     m.button4.observeField("buttonSelected", "handleButtonClick_stock4a")
     m.button5.observeField("buttonSelected", "handleButtonClick_stock5a")
     m.button6.observeField("buttonSelected", "handleButtonClick_stock6a")
-    m.boughtStocks = []
+
+    m.buttonS1 = m.top.findNode("stock1sell")
+    m.buttonS2 = m.top.findNode("stock2sell")
+    m.buttonS3 = m.top.findNode("stock3sell")
+    m.buttonS4 = m.top.findNode("stock4sell")
+    m.buttonS5 = m.top.findNode("stock5sell")
+    m.buttonS6 = m.top.findNode("stock6sell")
+
+    m.buttonS1.observeField("buttonSelected", "handleButtonClick_stock1sell")
+    m.buttonS2.observeField("buttonSelected", "handleButtonClick_stock2sell")
+    m.buttonS3.observeField("buttonSelected", "handleButtonClick_stock3sell")
+    m.buttonS4.observeField("buttonSelected", "handleButtonClick_stock4sell")
+    m.buttonS5.observeField("buttonSelected", "handleButtonClick_stock5sell")
+    m.buttonS6.observeField("buttonSelected", "handleButtonClick_stock6sell")
+
+    m.boughtsell1 = 0
+    m.boughtsell2 = 0
+    m.boughtsell3 = 0
+    m.boughtsell4 = 0
+    m.boughtsell5 = 0
+    m.boughtsell6 = 0
 
     changeFocus(m.currentIndex)
     m.stocktimer = m.top.findNode("stockTimer")
@@ -21,25 +41,33 @@ sub init()
     m.remainingMoney = 10000 ' Initialize remaining money to $10000
     m.boughtStocksLabel = m.top.findNode("boughtStocksLabel")
     m.boughtStocksLabel.text = "Bought Stocks:"
-    
+
+    m.boughtStocks1Label = m.top.findNode("AppleNum")
+    m.boughtStocks2Label = m.top.findNode("FacebookNum")
+    m.boughtStocks3Label = m.top.findNode("GoogleNum")
+    m.boughtStocks4Label = m.top.findNode("MicrosoftNum")
+    m.boughtStocks5Label = m.top.findNode("NetflixNum")
+    m.boughtStocks6Label = m.top.findNode("SamsungNum")
+    updateList()
+
 end sub
 
 sub onKeyEvent(key as String, press as Boolean) as Boolean
     if press then
         if key = "right" then
-            m.currentIndex = (m.currentIndex + 1) mod 6
+            m.currentIndex = (m.currentIndex + 1) mod 12
             changeFocus(m.currentIndex)
             return true
         else if key = "left" then
-            m.currentIndex = (m.currentIndex - 1 + 6) mod 6
+            m.currentIndex = (m.currentIndex - 1 + 12) mod 12
             changeFocus(m.currentIndex)
             return true
         else if key = "up" then
-            m.currentIndex = (m.currentIndex + 3) mod 6
+            m.currentIndex = (m.currentIndex - 3 + 12) mod 12
             changeFocus(m.currentIndex)
             return true
         else if key = "down" then
-            m.currentIndex = (m.currentIndex + 3) mod 6
+            m.currentIndex = (m.currentIndex + 3) mod 12
             changeFocus(m.currentIndex)
             return true
         end if
@@ -48,9 +76,9 @@ sub onKeyEvent(key as String, press as Boolean) as Boolean
 end sub
 
 sub changeFocus(index as Integer)
-    buttons = ["stock1a", "stock2a", "stock3a", "stock4a", "stock5a", "stock6a"]
+    buttons = ["stock1a", "stock2a", "stock3a", "stock1sell", "stock2sell", "stock3sell", "stock4a", "stock5a","stock6a","stock4sell","stock5sell","stock6sell"]
     
-    for i = 0 to 5
+    for i = 0 to 11
         button = m.top.findNode(buttons[i])
         if i = index then
             button.setFocus(true)
@@ -85,10 +113,36 @@ sub handleButtonClick_stock6a(event as Object)
 end sub
 
 
-sub showPopup()
+
+sub handleButtonClick_stock1sell(event as Object)
+    sellStock("AppleCost")
+end sub
+
+sub handleButtonClick_stock2sell(event as Object)
+    sellStock("FacebookCost")
+end sub
+
+sub handleButtonClick_stock3sell(event as Object)
+    sellStock("GoogleCost")
+end sub
+
+sub handleButtonClick_stock4sell(event as Object)
+    sellStock("MicrosoftCost")
+end sub
+
+sub handleButtonClick_stock5sell(event as Object)
+    sellStock("NetflixCost")
+end sub
+
+sub handleButtonClick_stock6sell(event as Object)
+    sellStock("SamsungCost")
+end sub
+
+
+sub showPopup(stockId as String)
    
     popupLabel = CreateObject("roSGNode", "Label")
-    popupLabel.text = "Stock Bought"
+    popupLabel.text = "One piece of " + stockId + "'s stock bought"
     
   
     labelWidth = 200 
@@ -167,8 +221,6 @@ sub updateStockPrice(stockId as String)
     end if
 end sub
 
-<<<<<<< Updated upstream
-=======
 sub updateList()
     if m.boughtStocks1Label <> invalid
         m.boughtStocks1Label.text = "Apple  x" + str(m.boughtsell1)
@@ -202,11 +254,10 @@ sub updateList()
     end if
 end sub
 
->>>>>>> Stashed changes
-sub showBadPopup()
+sub showBadPopup(stockId as String)
    
     popupbadLabel = CreateObject("roSGNode", "Label")
-    popupbadLabel.text = "You need more money to buy this stock"
+    popupbadLabel.text = "You need more money to buy one " + stockId + "'s stock"
     
   
     labelWidth2 = 200 
@@ -229,27 +280,10 @@ sub showBadPopup()
     m.popupLabel = popupbadLabel
 end sub
 
-<<<<<<< Updated upstream
-sub buyStock(stockId as String)
-
-    stockLabel = m.top.findNode(stockId)
-    priceText = stockLabel.text
-    numericText = mid(priceText, 2)
-    stockPrice = Val(numericText)
-    if stockPrice < m.remainingMoney then
-        m.remainingMoney = m.remainingMoney - stockPrice
-        m.top.findNode("MoneyLabel").text = "$" + str(m.remainingMoney)
-        m.boughtStocks.Push(stockId)
-        m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
-        showPopup()
-    else
-        showBadPopup()
-    end if
-=======
-sub sellPopup()
+sub sellNonePopup(stockId as String)
    
     popupSellLabel = CreateObject("roSGNode", "Label")
-    popupSellLabel.text = "Sold Stock"
+    popupSellLabel.text = "There are no " + stockId + " stocks to sell"
     
   
     labelWidth3 = 200 
@@ -272,6 +306,32 @@ sub sellPopup()
     m.popupLabel = popupSellLabel
 end sub
 
+sub soldPopup(stockId as String)
+   
+    popupSoldLabel = CreateObject("roSGNode", "Label")
+    popupSoldLabel.text = "You have sold one stock of " + stockId + "!"
+    
+  
+    labelWidth4 = 200 
+    labelHeight4 = 50 
+    screenWidth4 = 1920 
+    screenHeight4 = 1080 
+    posX4 = (screenWidth4 - labelWidth4) / 2
+    posY4 = ((screenHeight4 - labelHeight4) / 2) + 50
+    
+    
+    popupSoldLabel.translation = [450, posY4]
+    popupSoldLabel.color = "0x00FF00"
+    
+    m.top.appendChild(popupSoldLabel)
+    
+    
+    m.testtimer.control = "start"
+    m.testtimer.duration = 1
+    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.popupLabel = popupSoldLabel
+end sub
+
 sub buyStock(stockId as String)
 
         stockLabel = m.top.findNode(stockId)
@@ -283,19 +343,25 @@ sub buyStock(stockId as String)
         if stockPrice < m.remainingMoney then
             m.remainingMoney = m.remainingMoney - stockPrice
             moneyLabel = m.top.findNode("MoneyLabel")
-
+            
             if stockId = "AppleCost" then
                 m.boughtsell1 = m.boughtsell1 + 1
+                showPopup("Apple")
             else if stockId = "FacebookCost" then
                 m.boughtsell2 = m.boughtsell2 + 1
+                showPopup("Facebook")
             else if stockId = "GoogleCost" then
                 m.boughtsell3 = m.boughtsell3 + 1
+                showPopup("Google")
             else if stockId = "MicrosoftCost" then
                 m.boughtsell4 = m.boughtsell4 + 1
+                showPopup("Microsoft")
             else if stockId = "NetflixCost" then
                 m.boughtsell5 = m.boughtsell5 + 1
+                showPopup("Notflix")
             else if stockId = "SamsungCost" then
                 m.boughtsell6 = m.boughtsell6 + 1
+                showPopup("Samsung")
             end if
             updateList()
 
@@ -306,15 +372,92 @@ sub buyStock(stockId as String)
             end if
             
             m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
-            showPopup()
 
             
         else
-            showBadPopup()
+            if stockId = "AppleCost" then
+                showBadPopup("Apple")
+            else if stockId = "FacebookCost" then
+                showBadPopup("Facebook")
+            else if stockId = "GoogleCost" then
+                showBadPopup("Google")
+            else if stockId = "MicrosoftCost" then
+                showBadPopup("Microsoft")
+            else if stockId = "NetflixCost" then
+                showBadPopup("Netflix")
+            else if stockId = "SamsungCost" then
+                showBadPopup("Samsung")
+            end if
         end if
->>>>>>> Stashed changes
 
-end sub 
+end sub
+
+sub sellStock(stockId as String)
+
+    stockLabel2 = m.top.findNode(stockId)
+    priceText2 = stockLabel2.text
+    numericText2 = mid(priceText2, 2)
+    stockPrice2 = Val(numericText2)
+
+    moneyLabel2 = m.top.findNode("MoneyLabel")
+        
+    if stockId = "AppleCost" then
+        if m.boughtsell1 > 0 then
+            m.remainingMoney = m.remainingMoney + stockPrice2
+            m.boughtsell1 = m.boughtsell1 - 1
+            soldPopup("Apple")
+        else
+            sellNonePopup("Apple")
+        end if
+    else if stockId = "FacebookCost" then
+        if m.boughtsell2 > 0 then
+            m.remainingMoney = m.remainingMoney + stockPrice2
+            m.boughtsell2 = m.boughtsell2 - 1
+            soldPopup("Facebook")
+        else
+            sellNonePopup("Facebook")
+        end if
+    else if stockId = "GoogleCost" then
+        if m.boughtsell3 > 0 then
+            m.remainingMoney = m.remainingMoney + stockPrice2
+            m.boughtsell3 = m.boughtsell3 - 1
+            soldPopup("Google")
+        else
+            sellNonePopup("Google")
+        end if
+    else if stockId = "MicrosoftCost" then
+        if m.boughtsell4 > 0 then
+            m.remainingMoney = m.remainingMoney + stockPrice2
+            m.boughtsell4 = m.boughtsell4 - 1
+            soldPopup("Microsoft")
+        else
+            sellNonePopup("Microsoft")
+        end if
+    else if stockId = "NetflixCost" then
+        if m.boughtsell5 > 0 then
+            m.remainingMoney = m.remainingMoney + stockPrice2
+            m.boughtsell5 = m.boughtsell5 - 1
+            soldPopup("Netflix")
+        else
+            sellNonePopup("Netflix")
+        end if
+    else if stockId = "SamsungCost" then
+        if m.boughtsell6 > 0 then
+            m.remainingMoney = m.remainingMoney + stockPrice2
+            m.boughtsell6 = m.boughtsell6 - 1
+            soldPopup("Samsung")
+        else
+            sellNonePopup("Samsung")
+        end if
+    end if
+    updateList()
+
+    if moneyLabel2 <> invalid then
+        moneyLabel2.text = "$" + str(m.remainingMoney)
+    else
+        print "MoneyLabel node not found."
+    end if
+end sub
 
 
 
