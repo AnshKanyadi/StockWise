@@ -6,6 +6,8 @@
           type="assocarray"
           alias="category_list.itemSelected"
         />
+
+    <function name = "buttonFocus" />
   </interface>
   <children>
  <Video
@@ -24,6 +26,9 @@
       font-size="90"
       text-font="font:LargeBoldSystemFont"
       font-color="0xFFFFFFFF"
+      checkedIconUri = ""
+      focusedCheckedIconUri = ""
+      checkOnSelect = "false"
     >
       <ContentNode id="categories" role="content">
         <ContentNode title="View Market"/>

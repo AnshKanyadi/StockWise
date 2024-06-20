@@ -26,4 +26,10 @@ function setVideo() as void
   
 end function
 
+function buttonFocus()
+  m.category_list.setFocus(true)
+  m.category_list.selectedIndex = -1
+  print "radio button has been reset"
+end function
+
 

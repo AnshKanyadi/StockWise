@@ -6,7 +6,8 @@
      <homepage
       id="homepage"
       visible="true"
-      translation="[0,0]" />
+      translation="[0,0]"
+       />
     <tutorial
       id="tutorial"
       visible="false"
@@ -14,6 +15,7 @@
     <game_screen
       id="game_screen"
       visible="false"
-      translation="[0,0]" />
+      translation="[0,0]"
+       />
   </children> 
 </component>

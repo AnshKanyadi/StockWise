@@ -1,22 +1,22 @@
 function init()
     ? "[home_scene] init"
-    
-    
+
+
     m.home_screen = m.top.findNode("homepage")
     m.home_screen.setFocus(true)
 
-    
+
     m.tutorial = m.top.findNode("tutorial")
     m.tutorial.visible = false
 
     m.game_screen = m.top.findNode("game_screen")
     m.game_screen.visible = false
-    
+
  
-    
+
     m.home_screen.observeField("category_selected", "onCategorySelected")
-    
-	
+
+
     m.buttonIndex = -1
 end function
 
@@ -26,19 +26,19 @@ sub onCategorySelected(obj)
 
     m.buttonIndex = obj.getData()
 
-    if m.buttonIndex = 1
+    if m.buttonIndex = 1 then
         m.home_screen.visible = false
         m.tutorial.visible = true
 
         m.home_screen.setFocus(false)
         m.tutorial.setFocus(true)
 
-        
-        
-       
+
+
+
     end if
 
-    if m.buttonIndex = 0
+    if m.buttonIndex = 0 then
         m.home_screen.visible = false
         m.tutorial.visible = false
         m.game_screen.visible = true
@@ -50,17 +50,31 @@ sub onCategorySelected(obj)
     end if
 end sub
 function OnKeyEvent(key as String, press as Boolean) as Boolean
+
     result = false
-    if press
-        if key = "back"
-            if m.game_screen.visible or m.tutorial.visible
+    if press then
+        if key = "back" then
+            if m.game_screen.visible then
                 m.game_screen.visible = false
                 m.tutorial.visible = false
-                m.center_square.visible = true
+                m.home_screen.visible = true
 
-                'm.game_screen.setFocus(false)
-                'm.tutorial.setFocus(false)
-                m.center_square.setFocus(true)
+                m.game_screen.setFocus(false)
+                m.tutorial.setFocus(false)
+                m.home_screen.setFocus(true)
+                m.home_screen.callFunc("buttonFocus")
+
+                result = true
+
+            else if m.tutorial.visible then
+                m.tutorial.visible = false
+                m.game_screen.visible = false
+                m.home_screen.visible = true
+
+                m.game_screen.setFocus(false)
+                m.tutorial.setFocus(false)
+                m.home_screen.setFocus(true)
+                m.home_screen.callFunc("buttonFocus")
 
                 result = true
             end if
@@ -68,17 +82,4 @@ function OnKeyEvent(key as String, press as Boolean) as Boolean
     end if
     return result
 
-    'result = false
-    'if press
-    '    if key = "back"
-    '        numberOfScreens = m.screenStack.Count()
-    '       if numberOfScreens > 1
-    '            CloseScreen(invalid)
-    '            result = true
-    '        end if
-    '    end if
-    'end if
-    ' The OnKeyEvent() function must return true if the component handled the event,
-    ' or false if it did not handle the event.
-    'return result
 end function
