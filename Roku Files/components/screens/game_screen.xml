@@ -30,7 +30,7 @@
     <Label
          id="gameLabel" 
          text="Stock Market" 
-         color="0x6f1ab1ff"
+         color="0x000000ff"
      />
 
     <Label
