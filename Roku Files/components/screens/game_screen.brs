@@ -34,6 +34,20 @@ sub init()
     m.buttonS5.observeField("buttonSelected", "handleButtonClick_stock5sell")
     m.buttonS6.observeField("buttonSelected", "handleButtonClick_stock6sell")
 
+    m.buttonG1 = m.top.findNode("graph1")
+    m.buttonG2 = m.top.findNode("graph2")
+    m.buttonG3 = m.top.findNode("graph3")
+    m.buttonG4 = m.top.findNode("graph4")
+    m.buttonG5 = m.top.findNode("graph5")
+    m.buttonG6 = m.top.findNode("graph6")
+
+    m.buttonG1.observeField("buttonSelected", "handleButtonClick_stock1sell")
+    m.buttonG2.observeField("buttonSelected", "handleButtonClick_stock2sell")
+    m.buttonG3.observeField("buttonSelected", "handleButtonClick_stock3sell")
+    m.buttonS4.observeField("buttonSelected", "handleButtonClick_stock4sell")
+    m.buttonS5.observeField("buttonSelected", "handleButtonClick_stock5sell")
+    m.buttonS6.observeField("buttonSelected", "handleButtonClick_stock6sell")
+
     m.boughtsell1 = 0
     m.boughtsell2 = 0
     m.boughtsell3 = 0
@@ -70,11 +84,11 @@ sub onKeyEvent(key as String, press as Boolean) as Boolean
             changeFocus(m.currentIndex)
             return true
         else if key = "up" then
-            m.currentIndex = (m.currentIndex - 3 + 12) mod 12
+            m.currentIndex = (m.currentIndex - 3 + 12) mod 18
             changeFocus(m.currentIndex)
             return true
         else if key = "down" then
-            m.currentIndex = (m.currentIndex + 3) mod 12
+            m.currentIndex = (m.currentIndex + 3) mod 18
             changeFocus(m.currentIndex)
             return true
         end if
@@ -83,9 +97,10 @@ sub onKeyEvent(key as String, press as Boolean) as Boolean
 end sub
 
 sub changeFocus(index as Integer)
-    buttons = ["stock1a", "stock2a", "stock3a", "stock1sell", "stock2sell", "stock3sell", "stock4a", "stock5a","stock6a","stock4sell","stock5sell","stock6sell"]
+    buttons = ["stock1a", "stock2a", "stock3a", "stock1sell", "stock2sell", "stock3sell", "graph1", "graph2", "graph3", "stock4a", "stock5a","stock6a","stock4sell","stock5sell","stock6sell",
+    "graph4", "graph5", "graph6"]
     
-    for i = 0 to 11
+    for i = 0 to 17
         button = m.top.findNode(buttons[i])
         if i = index then
             button.setFocus(true)
