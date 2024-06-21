@@ -228,6 +228,70 @@
             visible="true"
         />
 
+        <Button
+            id="graph1"
+            text="More info"
+            translation="[100, 550]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+
+        <Button
+            id="graph2"
+            text="More info"
+            translation="[500, 550]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+
+        <Button
+            id="graph3"
+            text="More info"
+            translation="[900, 550]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+
+        <Button
+            id="graph4"
+            text="More info"
+            translation="[150, 1050]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+
+        <Button
+            id="graph5"
+            text="More info"
+            translation="[550, 1050]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+
+        <Button
+            id="graph6"
+            text="More info"
+            translation="[950, 1050]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+
+
+
+        
+
          <Label
          id="AppleCost" 
          text="$783" 
