@@ -2,27 +2,45 @@
     <script type="text/brightscript" uri="pkg:/components/screens/game_screen.brs" />
   
     <children>
+
+    <Poster
+        id="background"
+        uri="pkg:/images/background.jpg"  
+        translation="[0, 0]"
+        width="1920"  
+        height="1080"  
+    />
+
+     <Poster
+        id="topLeftImage"
+        uri="pkg:/images/roku.png"  
+        translation="[10, 10]"
+        width="400"
+        height="126"        
+    />
+
     <Label
          id="gameLabel" 
          text="Stock Market" 
-         translation="[700, 50]" 
-         />
-          <Label
+     />
+
+    <Label
          id="PlayerLabel" 
          text="Balance:" 
          translation="[1450, 100]" 
-         />
-          <Label
+    />
+
+    <Label
          id="MoneyLabel" 
          text="$10000" 
          translation="[1450, 160]" 
-         />
-            <Label
+    />
+
+    <Label
          id="BoughtStocksLabel" 
          text="N/A &#10;" 
          translation="[1450, 600]"
-        
-         />
+    />
 
          <Timer
   id="testTimer"

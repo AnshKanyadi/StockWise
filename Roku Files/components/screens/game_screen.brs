@@ -1,4 +1,11 @@
 sub init()
+
+    m.gameLabel = m.top.findNode("gameLabel")
+    centerX = (1680) / 2
+    m.gameLabel.translation = [centerX, 50]
+
+
+
     m.currentIndex = 0
     m.button1 = m.top.findNode("stock1a")
     m.button2 = m.top.findNode("stock2a")
