@@ -1,8 +1,8 @@
 sub init()
 
     m.gameLabel = m.top.findNode("gameLabel")
-    centerX = (1680) / 2
-    m.gameLabel.translation = [centerX, 50]
+    centerX = (1480) / 2
+    m.gameLabel.translation = [centerX, 20]
 
 
 
@@ -56,6 +56,19 @@ sub init()
     m.boughtStocks5Label = m.top.findNode("NetflixNum")
     m.boughtStocks6Label = m.top.findNode("SamsungNum")
     updateList()
+
+    'font section
+
+    'creating fonts
+    m.gameLabelFont = CreateObject("roSGNode", "Font")
+    m.gameLabelFont.uri = "pkg:/fonts/MontserratB.ttf"
+    m.gameLabelFont.size = 60
+    'm.gameLabelFont.color = 
+    
+
+    'setting fonts
+    m.gameLabel.font = m.gameLabelFont
+
 
 end sub
 

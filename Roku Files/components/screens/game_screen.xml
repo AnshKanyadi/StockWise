@@ -12,16 +12,25 @@
     />
 
      <Poster
-        id="topLeftImage"
+        id="rokuLogo1"
         uri="pkg:/images/roku.png"  
         translation="[10, 10]"
-        width="400"
-        height="126"        
+        width="256"
+        height="80"        
+    />
+
+    <Poster
+        id="rokuLogo2"
+        uri="pkg:/images/rokubox.jpg"  
+        translation="[1490, 10]"
+        width="80"
+        height="80"        
     />
 
     <Label
          id="gameLabel" 
          text="Stock Market" 
+         color="0x6f1ab1ff"
      />
 
     <Label
