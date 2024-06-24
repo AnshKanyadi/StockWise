@@ -1,8 +1,6 @@
 sub init()
 
-    m.gameLabel = m.top.findNode("gameLabel")
-    centerX = (1480) / 2
-    m.gameLabel.translation = [centerX, 20]
+
 
 
 
@@ -73,16 +71,39 @@ sub init()
 
     'font section
 
+    m.gameLabel = m.top.findNode("gameLabel")
+    centerX = 700
+    m.gameLabel.translation = [centerX, 30]
+
+    m.playerLabel = m.top.findNode("playerLabel")
+    m.playerLabel.translation = [1610, 40]
+
+    'm.moneyLabel.translation = [1800, 45]
+
     'creating fonts
     m.gameLabelFont = CreateObject("roSGNode", "Font")
-    m.gameLabelFont.uri = "pkg:/fonts/MontserratB.ttf"
+    m.gameLabelFont.uri = "pkg:/fonts/Barabara.otf"
     m.gameLabelFont.size = 60
     'm.gameLabelFont.color = 
+    m.balanceFont = CreateObject("roSGNode", "Font")
+    m.balanceFont.uri = "pkg:/fonts/LoveloBlack.otf"
+    m.balanceFont.size = 32
     
+    m.boughtStockFont = CreateObject("roSGNode", "Font")
+    m.boughtStockFont.uri = "pkg:/fonts/MontserratR.ttf"
+    m.boughtStockFont.size = 40
 
     'setting fonts
     m.gameLabel.font = m.gameLabelFont
-
+    'm.moneyLabel.font = m.balanceFont
+    m.playerLabel.font = m.balanceFont
+    m.boughtStocks1Label.font = m.boughtStockFont
+    m.boughtStocks2Label.font = m.boughtStockFont
+    m.boughtStocks3Label.font = m.boughtStockFont
+    m.boughtStocks4Label.font = m.boughtStockFont
+    m.boughtStocks5Label.font = m.boughtStockFont
+    m.boughtStocks6Label.font = m.boughtStockFont
+    'm.boughtStocksLabel.font= m.boughtStocksFont
 
 end sub
 

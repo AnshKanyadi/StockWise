@@ -22,33 +22,36 @@
     <Poster
         id="rokuLogo2"
         uri="pkg:/images/rokubox.jpg"  
-        translation="[1490, 10]"
+        translation="[1500, 10]"
         width="80"
         height="80"        
     />
 
     <Label
          id="gameLabel" 
-         text="Stock Market" 
+         text="STOCK MARKET" 
          color="0x000000ff"
      />
 
     <Label
          id="PlayerLabel" 
          text="Balance:" 
-         translation="[1450, 100]" 
+         color="0x000000ff"
+
     />
 
     <Label
          id="MoneyLabel" 
          text="$10000" 
-         translation="[1450, 160]" 
+         color="0x000000ff"
+         translation = "[1750, 36]"
+
     />
 
     <Label
          id="BoughtStocksLabel" 
          text="N/A &#10;" 
-         translation="[1450, 600]"
+         translation="[1500, 600]"
     />
 
          <Timer
@@ -326,32 +329,32 @@
         <Label
          id="AppleNum" 
          text="Apple  x" 
-         translation="[1450, 675]" 
+         translation="[1500, 675]" 
          />
          <Label
          id="FacebookNum" 
          text="Facebook  x"
-         translation="[1450, 725]" 
+         translation="[1500, 725]" 
          />
          <Label
          id="GoogleNum" 
          text="Google  x" 
-         translation="[1450, 775]" 
+         translation="[1500, 775]" 
          />
          <Label
          id="MicrosoftNum" 
          text="Microsoft  x" 
-         translation="[1450, 825]" 
+         translation="[1500, 825]" 
          />
          <Label
          id="NetflixNum" 
          text="Netflix  x" 
-         translation="[1450, 875]" 
+         translation="[1500, 875]" 
          />
          <Label
          id="SamsungNum" 
          text="Samsung  x" 
-         translation="[1450, 925]" 
+         translation="[1500, 925]" 
          />
 
     </children>
