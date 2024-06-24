@@ -41,12 +41,7 @@ sub init()
     m.buttonG5 = m.top.findNode("graph5")
     m.buttonG6 = m.top.findNode("graph6")
 
-    m.buttonG1.observeField("buttonSelected", "handleButtonClick_stock1sell")
-    m.buttonG2.observeField("buttonSelected", "handleButtonClick_stock2sell")
-    m.buttonG3.observeField("buttonSelected", "handleButtonClick_stock3sell")
-    m.buttonS4.observeField("buttonSelected", "handleButtonClick_stock4sell")
-    m.buttonS5.observeField("buttonSelected", "handleButtonClick_stock5sell")
-    m.buttonS6.observeField("buttonSelected", "handleButtonClick_stock6sell")
+
 
     m.boughtsell1 = 0
     m.boughtsell2 = 0

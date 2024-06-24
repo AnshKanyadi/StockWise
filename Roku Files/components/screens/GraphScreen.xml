@@ -1,0 +1,15 @@
+
+<component name="GraphScreen" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/screens/GraphScreen.brs" />
+    
+    <children>
+       
+         
+        <Label
+         id="testlabel" 
+         text="This is the graph screen" 
+         translation="[400, 50]" 
+         />
+       
+    </children>
+</component>

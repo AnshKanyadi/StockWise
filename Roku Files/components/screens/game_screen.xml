@@ -1,7 +1,18 @@
 <component name="game_screen" extends="Group">
     <script type="text/brightscript" uri="pkg:/components/screens/game_screen.brs" />
+
+    <interface>
+    
+    <field 
+    id="graphbutton_selected" 
+    type="boolean"
+     alias="graph1.buttonSelected"
+      />
+  </interface>
   
     <children>
+
+     
 
     <Poster
         id="background"

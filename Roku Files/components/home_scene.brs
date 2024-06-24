@@ -12,9 +12,14 @@ function init()
     m.game_screen = m.top.findNode("game_screen")
     m.game_screen.visible = false
 
+    m.GraphScreen = m.top.findNode("GraphScreen")
+    m.GraphScreen.visible = false
+    m.GraphScreen.setFocus(false)
+
  
 
     m.home_screen.observeField("category_selected", "onCategorySelected")
+    m.game_screen.observeField("graphbutton_selected", "GraphScreenShow")
 
 
     m.buttonIndex = -1
@@ -77,9 +82,34 @@ function OnKeyEvent(key as String, press as Boolean) as Boolean
                 m.home_screen.callFunc("buttonFocus")
 
                 result = true
+            
+
+            else if m.GraphScreen.visible then
+                m.GraphScreen.visible = false
+                m.game_screen.visible = true 
+                m.home_screen.visible = false
+                m.tutorial.visible = false
+                m.home_screen.setFocus(false)
+                m.game_screen.setFocus(true)
+                m.GraphScreen.setFocus(false)
+
+                result = true
             end if
+                
         end if
     end if
+    
     return result
+    
 
 end function
+
+sub GraphScreenShow()
+    m.game_screen.visible = false
+    m.game_screen.setFocus(false)
+    m.GraphScreen.visible = true
+    m.GraphScreen.setFocus(true)
+    
+
+
+end sub
