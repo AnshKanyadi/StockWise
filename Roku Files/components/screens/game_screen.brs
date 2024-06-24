@@ -71,15 +71,15 @@ end sub
 sub onKeyEvent(key as String, press as Boolean) as Boolean
     if press then
         if key = "right" then
-            m.currentIndex = (m.currentIndex + 1) mod 12
+            m.currentIndex = (m.currentIndex + 1) mod 18
             changeFocus(m.currentIndex)
             return true
         else if key = "left" then
-            m.currentIndex = (m.currentIndex - 1 + 12) mod 12
+            m.currentIndex = (m.currentIndex - 1 + 18) mod 18
             changeFocus(m.currentIndex)
             return true
         else if key = "up" then
-            m.currentIndex = (m.currentIndex - 3 + 12) mod 18
+            m.currentIndex = (m.currentIndex - 3 + 18) mod 18
             changeFocus(m.currentIndex)
             return true
         else if key = "down" then
