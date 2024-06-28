@@ -5,7 +5,7 @@
 
     <Poster
         id="background"
-        uri="pkg:/images/background.jpg"  
+        uri="pkg:/images/background1.png"  
         translation="[0, 0]"
         width="1920"  
         height="1080"  
@@ -35,16 +35,18 @@
 
     <Label
          id="PlayerLabel" 
-         text="Balance:" 
+         text="Balance: $" 
          color="0x000000ff"
 
     />
 
     <Label
          id="MoneyLabel" 
-         text="$10000" 
+         text="10000" 
          color="0x000000ff"
-         translation = "[1750, 36]"
+         translation = "[1775, 61]"
+         
+         
 
     />
 
@@ -329,31 +331,37 @@
         <Label
          id="AppleNum" 
          text="Apple  x" 
+         color="0x000000ff"
          translation="[1500, 675]" 
          />
          <Label
          id="FacebookNum" 
          text="Facebook  x"
+         color="0x000000ff"
          translation="[1500, 725]" 
          />
          <Label
          id="GoogleNum" 
          text="Google  x" 
+         color="0x000000ff"
          translation="[1500, 775]" 
          />
          <Label
          id="MicrosoftNum" 
          text="Microsoft  x" 
+         color="0x000000ff"
          translation="[1500, 825]" 
          />
          <Label
          id="NetflixNum" 
          text="Netflix  x" 
+         color="0x000000ff"
          translation="[1500, 875]" 
          />
          <Label
          id="SamsungNum" 
          text="Samsung  x" 
+         color="0x000000ff"
          translation="[1500, 925]" 
          />
 
