@@ -68,15 +68,17 @@ sub init()
     m.boughtStocks5Label = m.top.findNode("NetflixNum")
     m.boughtStocks6Label = m.top.findNode("SamsungNum")
     updateList()
-
+    '
     'font section
 
     m.gameLabel = m.top.findNode("gameLabel")
     centerX = 700
-    m.gameLabel.translation = [centerX, 30]
+    m.gameLabel.translation = [1602, 18]
 
     m.playerLabel = m.top.findNode("playerLabel")
-    m.playerLabel.translation = [1610, 40]
+    m.playerLabel.translation = [1637, 61]
+
+    m.moneyLabel = m.top.findNode("MoneyLabel")
 
     'm.moneyLabel.translation = [1800, 45]
 
@@ -87,15 +89,19 @@ sub init()
     'm.gameLabelFont.color = 
     m.balanceFont = CreateObject("roSGNode", "Font")
     m.balanceFont.uri = "pkg:/fonts/LoveloBlack.otf"
-    m.balanceFont.size = 32
+    m.balanceFont.size = 28
+
+    m.sFont = CreateObject("roSGNode", "Font")
+    m.sFont.uri = "pkg:/fonts/LoveloBlack.otf"
+    m.sFont.size = 42
     
     m.boughtStockFont = CreateObject("roSGNode", "Font")
     m.boughtStockFont.uri = "pkg:/fonts/MontserratR.ttf"
     m.boughtStockFont.size = 40
 
     'setting fonts
-    m.gameLabel.font = m.gameLabelFont
-    'm.moneyLabel.font = m.balanceFont
+    m.gameLabel.font = m.sFont
+    m.moneyLabel.font = m.balanceFont
     m.playerLabel.font = m.balanceFont
     m.boughtStocks1Label.font = m.boughtStockFont
     m.boughtStocks2Label.font = m.boughtStockFont
@@ -259,7 +265,7 @@ sub updateStockPrice(stockId as String)
         newPrice = currentPrice + priceChange
         if newPrice < 0 then newPrice = 0 
  
-        stockLabel.text = "$" + str(newPrice)
+        stockLabel.text =  "$" + str(newPrice)
         
 
         if priceChange > 0 then
@@ -395,10 +401,12 @@ sub buyStock(stockId as String)
         
         numericText = mid(priceText, 2)
         stockPrice = Val(numericText)
-        
+
+        moneyLabel = m.top.findNode("moneyLabel")
+
         if stockPrice < m.remainingMoney then
             m.remainingMoney = m.remainingMoney - stockPrice
-            moneyLabel = m.top.findNode("MoneyLabel")
+            
             
             if stockId = "AppleCost" then
                 m.boughtsell1 = m.boughtsell1 + 1
@@ -422,7 +430,7 @@ sub buyStock(stockId as String)
             updateList()
 
             if moneyLabel <> invalid then
-                moneyLabel.text = "$" + str(m.remainingMoney)
+                moneyLabel.text =  str(m.remainingMoney)
             else
                 print "MoneyLabel node not found."
             end if
@@ -509,7 +517,7 @@ sub sellStock(stockId as String)
     updateList()
 
     if moneyLabel2 <> invalid then
-        moneyLabel2.text = "$" + str(m.remainingMoney)
+        moneyLabel2.text = str(m.remainingMoney)
     else
         print "MoneyLabel node not found."
     end if
