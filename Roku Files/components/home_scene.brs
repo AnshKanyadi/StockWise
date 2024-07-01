@@ -14,12 +14,13 @@ function init()
 
     m.GraphScreen = m.top.findNode("GraphScreen")
     m.GraphScreen.visible = false
-    m.GraphScreen.setFocus(false)
+    
 
  
 
     m.home_screen.observeField("category_selected", "onCategorySelected")
     m.game_screen.observeField("graphbutton_selected", "GraphScreenShow")
+    
 
 
     m.buttonIndex = -1
@@ -109,7 +110,10 @@ sub GraphScreenShow()
     m.game_screen.setFocus(false)
     m.GraphScreen.visible = true
     m.GraphScreen.setFocus(true)
+    ? "showing graph screen"
     
 
 
 end sub
+
+

@@ -1,10 +1,7 @@
 sub init()
-
     m.gameLabel = m.top.findNode("gameLabel")
     centerX = (1680) / 2
     m.gameLabel.translation = [centerX, 50]
-
-
 
     m.currentIndex = 0
     m.button1 = m.top.findNode("stock1a")
@@ -41,7 +38,14 @@ sub init()
     m.buttonG5 = m.top.findNode("graph5")
     m.buttonG6 = m.top.findNode("graph6")
 
-
+    ' Initialize lists to store the last 5 prices for each stock
+    m.applePrices = []
+    m.facebookPrices = CreateObject("roArray", 5, true)
+    m.googlePrices = CreateObject("roArray", 5, true)
+    m.microsoftPrices = CreateObject("roArray", 5, true)
+    m.netflixPrices = CreateObject("roArray", 5, true)
+    m.samsungPrices = CreateObject("roArray", 5, true)
+    m.applePrices = [100, 105, 110, 115, 120]
 
     m.boughtsell1 = 0
     m.boughtsell2 = 0
@@ -66,7 +70,10 @@ sub init()
     m.boughtStocks6Label = m.top.findNode("SamsungNum")
     updateList()
 
+    
 end sub
+
+
 
 sub onKeyEvent(key as String, press as Boolean) as Boolean
     if press then
@@ -167,7 +174,7 @@ sub showPopup(stockId as String)
     screenWidth = 1920 
     screenHeight = 1080 
     posX = (screenWidth - labelWidth) / 2
-    posY = ((screenHeight - labelHeight) / 2) + 50
+    posY = ((screenHeight - labelHeight) / 2) + 80
     
     
     popupLabel.translation = [550, posY]
@@ -189,54 +196,67 @@ sub handleTimerEvent(event as Object)
 end sub
 
 sub handleStockTimerEvent(event as Object)
-  
+    ? m.applePrices
     updateStockPrice("AppleCost")
     updateStockPrice("FacebookCost")
     updateStockPrice("GoogleCost")
     updateStockPrice("MicrosoftCost")
     updateStockPrice("NetflixCost")
     updateStockPrice("SamsungCost")
+    
 end sub
 
 sub updateStockPrice(stockId as String)
-
     stockLabel = m.top.findNode(stockId)
-    
-
     priceText = stockLabel.text
-    
 
     if priceText <> invalid and priceText <> "" and left(priceText, 1) = "$" then
- 
         numericText = mid(priceText, 2)
-        
-    
         currentPrice = Val(numericText)
-        
-    
-        priceChange = Rnd(10) - 5 
-        
-      
+        priceChange = Rnd(70) - 5 
         newPrice = currentPrice + priceChange
         if newPrice < 0 then newPrice = 0 
- 
+
+        ' Add the new price to the appropriate list
+        if stockId = "AppleCost" then
+            addPriceToList(m.applePrices, newPrice)
+        else if stockId = "FacebookCost" then
+            addPriceToList(m.facebookPrices, newPrice)
+        else if stockId = "GoogleCost" then
+            addPriceToList(m.googlePrices, newPrice)
+        else if stockId = "MicrosoftCost" then
+            addPriceToList(m.microsoftPrices, newPrice)
+        else if stockId = "NetflixCost" then
+            addPriceToList(m.netflixPrices, newPrice)
+        else if stockId = "SamsungCost" then
+            addPriceToList(m.samsungPrices, newPrice)
+        end if
+
         stockLabel.text = "$" + str(newPrice)
-        
 
         if priceChange > 0 then
-  
             stockLabel.color = "0x00FF00"
         else if priceChange < 0 then
-
             stockLabel.color = "0xFF0000"
         else
-
             stockLabel.color = "0xFFFFFF" 
         end if
     else
         print "Invalid or empty price text:", priceText
     end if
 end sub
+
+sub addPriceToList(pricesList as Object, newPrice as integer)
+    
+    if pricesList.count() > 5
+        pricesList.Delete(0)
+    end if
+    pricesList.Push(newPrice)
+    AddAndSetFields( m.global, { globalContent: m.applePrices } )  
+    
+end sub
+
+
 
 sub updateList()
     if m.boughtStocks1Label <> invalid
@@ -282,7 +302,7 @@ sub showBadPopup(stockId as String)
     screenWidth2 = 1920 
     screenHeight2 = 1080 
     posX2 = (screenWidth2 - labelWidth2) / 2
-    posY2 = ((screenHeight2 - labelHeight2) / 2) + 50
+    posY2 = ((screenHeight2 - labelHeight2) / 2) + 80
     
     
     popupbadLabel.translation = [450, posY2]
@@ -308,7 +328,7 @@ sub sellNonePopup(stockId as String)
     screenWidth3 = 1920 
     screenHeight3 = 1080 
     posX3 = (screenWidth3 - labelWidth3) / 2
-    posY3 = ((screenHeight3 - labelHeight3) / 2) + 50
+    posY3 = ((screenHeight3 - labelHeight3) / 2) + 80
     
     
     popupSellLabel.translation = [450, posY3]
@@ -321,6 +341,7 @@ sub sellNonePopup(stockId as String)
     m.testtimer.duration = 1
     m.testtimer.observeField("fire", "handleTimerEvent")
     m.popupLabel = popupSellLabel
+
 end sub
 
 sub soldPopup(stockId as String)
@@ -334,7 +355,7 @@ sub soldPopup(stockId as String)
     screenWidth4 = 1920 
     screenHeight4 = 1080 
     posX4 = (screenWidth4 - labelWidth4) / 2
-    posY4 = ((screenHeight4 - labelHeight4) / 2) + 50
+    posY4 = ((screenHeight4 - labelHeight4) / 2) + 80
     
     
     popupSoldLabel.translation = [450, posY4]
@@ -347,6 +368,7 @@ sub soldPopup(stockId as String)
     m.testtimer.duration = 1
     m.testtimer.observeField("fire", "handleTimerEvent")
     m.popupLabel = popupSoldLabel
+
 end sub
 
 sub buyStock(stockId as String)
@@ -476,5 +498,18 @@ sub sellStock(stockId as String)
     end if
 end sub
 
-
+function AddAndSetFields( node as object, aa as object )
+    addFields = {}
+    setFields = {}
+    for each field in aa
+      if node.hasField( field )
+        setFields[ field ] = aa[ field ]
+      else
+        addFields[ field ] = aa[ field ]
+      end if
+    end for
+    
+    node.setFields( setFields )
+    node.addFields( addFields )
+  end function
 

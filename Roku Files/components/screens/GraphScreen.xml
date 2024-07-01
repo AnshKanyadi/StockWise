@@ -2,14 +2,45 @@
 <component name="GraphScreen" extends="Group">
     <script type="text/brightscript" uri="pkg:/components/screens/GraphScreen.brs" />
     
+   
     <children>
        
          
+        <Poster
+            id="poster"
+            width="640"  
+            height="360" 
+            translation="[320,180]"  
+            visible="true" />
         <Label
-         id="testlabel" 
-         text="This is the graph screen" 
-         translation="[400, 50]" 
-         />
+            id="label1"
+            text="This is where the graph will be displayed."
+            translation="[50,50]" />
+        <Timer
+  id="TestTimer"
+  repeat="false"
+  duration = "30"
+  
+/>
+
+  <Poster
+        id="b1"
+        uri="pkg:/images/bigbootymanonpole.jpg"  
+        translation="[50, 400]"
+        width="400"
+        height="126"        
+    />
+
+      <Poster
+        id="b2"
+        uri="pkg:/images/fatman.jpg"  
+        translation="[950, 400]"
+        width="400"
+        height="126"        
+    />
+
+  
+       
        
     </children>
 </component>
