@@ -167,10 +167,10 @@ sub showPopup(stockId as String)
     screenWidth = 1920 
     screenHeight = 1080 
     posX = (screenWidth - labelWidth) / 2
-    posY = ((screenHeight - labelHeight) / 2) + 50
+    posY = ((screenHeight - labelHeight) / 2) - 250
     
     
-    popupLabel.translation = [550, posY]
+    popupLabel.translation = [1300, posY]
     popupLabel.color = "0x00FF00"
     
     m.top.appendChild(popupLabel)
@@ -274,7 +274,7 @@ end sub
 sub showBadPopup(stockId as String)
    
     popupbadLabel = CreateObject("roSGNode", "Label")
-    popupbadLabel.text = "You need more money to buy one " + stockId + "'s stock"
+    popupbadLabel.text = "You need more money to buy " + stockId + "'s stock"
     
   
     labelWidth2 = 200 
@@ -282,10 +282,10 @@ sub showBadPopup(stockId as String)
     screenWidth2 = 1920 
     screenHeight2 = 1080 
     posX2 = (screenWidth2 - labelWidth2) / 2
-    posY2 = ((screenHeight2 - labelHeight2) / 2) + 50
+    posY2 = ((screenHeight2 - labelHeight2) / 2) - 200
     
     
-    popupbadLabel.translation = [450, posY2]
+    popupbadLabel.translation = [1200, posY2]
     popupbadLabel.color = "0xFF0000"
     
     m.top.appendChild(popupbadLabel)
@@ -308,10 +308,10 @@ sub sellNonePopup(stockId as String)
     screenWidth3 = 1920 
     screenHeight3 = 1080 
     posX3 = (screenWidth3 - labelWidth3) / 2
-    posY3 = ((screenHeight3 - labelHeight3) / 2) + 50
+    posY3 = ((screenHeight3 - labelHeight3) / 2) - 150
     
     
-    popupSellLabel.translation = [450, posY3]
+    popupSellLabel.translation = [1300, posY3]
     popupSellLabel.color = "0xFF0000"
     
     m.top.appendChild(popupSellLabel)
@@ -334,10 +334,10 @@ sub soldPopup(stockId as String)
     screenWidth4 = 1920 
     screenHeight4 = 1080 
     posX4 = (screenWidth4 - labelWidth4) / 2
-    posY4 = ((screenHeight4 - labelHeight4) / 2) + 50
+    posY4 = ((screenHeight4 - labelHeight4) / 2) - 100
     
     
-    popupSoldLabel.translation = [450, posY4]
+    popupSoldLabel.translation = [1300, posY4]
     popupSoldLabel.color = "0x00FF00"
     
     m.top.appendChild(popupSoldLabel)

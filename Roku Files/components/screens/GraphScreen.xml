@@ -10,6 +10,15 @@
          text="This is the graph screen" 
          translation="[400, 50]" 
          />
+         <Button
+            id="stock1a"
+            text="Buy"
+            translation="[100, 400]"
+            width="200"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
        
     </children>
 </component>
