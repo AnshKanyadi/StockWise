@@ -221,10 +221,10 @@ sub showPopup(stockId as String)
     m.top.appendChild(popupLabel)
     
     
-    m.testtimer = m.top.findNode("testTimer")
-    m.testtimer.control = "start"
-    m.testtimer.duration = 1
-    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.goodPopTimer = m.top.findNode("goodPopTimer")
+    m.goodPopTimer.control = "start"
+    m.goodPopTimer.duration = 1
+    m.goodPopTimer.observeField("fire", "handleTimerEvent")
     m.popupLabel = popupLabel
 end sub
 
@@ -235,48 +235,75 @@ end sub
 
 sub handleStockTimerEvent(event as Object)
   
-    updateStockPrice("AppleCost")
-    updateStockPrice("FacebookCost")
-    updateStockPrice("GoogleCost")
-    updateStockPrice("MicrosoftCost")
-    updateStockPrice("NetflixCost")
-    updateStockPrice("SamsungCost")
+    updateStockPrice("AppleCost", "stock1Change")
+    updateStockPrice("FacebookCost", "stock2Change")
+    updateStockPrice("GoogleCost", "stock3Change")
+    updateStockPrice("MicrosoftCost", "stock4Change")
+    updateStockPrice("NetflixCost", "stock5Change")
+    updateStockPrice("SamsungCost", "stock6Change")
 end sub
 
-sub updateStockPrice(stockId as String)
+function RoundToTwoDecimals(value as Float) as Float
+    roundedValue = Int(value * 100 + 0.5) / 100
+    return roundedValue
+end function
+
+
+
+sub updateStockPrice(stockId as String, changesLabels as String)
 
     stockLabel = m.top.findNode(stockId)
     
+    m.changesLabel = m.top.findNode(changesLabels)
 
     priceText = stockLabel.text
+
+    changeText = m.changesLabel.text
     
 
-    if priceText <> invalid and priceText <> "" and left(priceText, 1) = "$" then
+    if priceText <> invalid and priceText <> "" and changeText <> invalid and changeText <> "" then
  
-        numericText = mid(priceText, 2)
+        numericText = mid(priceText, 15)
         
     
         currentPrice = Val(numericText)
         
     
         priceChange = Rnd(10) - 5 
-        
+
       
         newPrice = currentPrice + priceChange
+        
+        if(currentPrice <> 0) then
+            m.percentChange = (priceChange / currentPrice) * 100
+            m.percentChange = RoundToTwoDecimals(m.percentChange)
+        end if
+        
         if newPrice < 0 then newPrice = 0 
  
+<<<<<<< Updated upstream
         stockLabel.text =  "$" + str(newPrice)
+=======
+>>>>>>> Stashed changes
         
 
         if priceChange > 0 then
-  
-            stockLabel.color = "0x00FF00"
+
+            stockLabel.text = "Stock Price: $" + str(newPrice)
+            m.changesLabel.text = "+" + str(priceChange) + "(+" + str(m.percentChange) + "%)"
+            m.changesLabel.color = "0x00FF00"
+
         else if priceChange < 0 then
 
-            stockLabel.color = "0xFF0000"
+            stockLabel.text = "Stock Price: $" + str(newPrice)
+            m.changesLabel.text = " " + str(priceChange) + "(" + str(m.percentChange) + "%)"
+            m.changesLabel.color = "0xFF0000"
+
         else
 
-            stockLabel.color = "0xFFFFFF" 
+            stockLabel.text = "Stock Price: $" + str(newPrice)
+            m.changesLabel.text =  " " + str(priceChange) + "(" + str(m.percentChange) + "%)"
+            m.changesLabel.color = "h0000ffd9"
         end if
     else
         print "Invalid or empty price text:", priceText
@@ -335,10 +362,10 @@ sub showBadPopup(stockId as String)
     
     m.top.appendChild(popupbadLabel)
     
-    
-    m.testtimer.control = "start"
-    m.testtimer.duration = 1
-    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.badPopTimer = m.top.findNode("badPopTimer")
+    m.badPopTimer.control = "start"
+    m.badPopTimer.duration = 1
+    m.badPopTimer.observeField("fire", "handleTimerEvent")
     m.popupLabel = popupbadLabel
 end sub
 
@@ -361,10 +388,10 @@ sub sellNonePopup(stockId as String)
     
     m.top.appendChild(popupSellLabel)
     
-    
-    m.testtimer.control = "start"
-    m.testtimer.duration = 1
-    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.noSellPopTimer = m.top.findNode("noSellPopTimer")
+    m.noSellPopTimer.control = "start"
+    m.noSellPopTimer.duration = 1
+    m.noSellPopTimer.observeField("fire", "handleTimerEvent")
     m.popupLabel = popupSellLabel
 end sub
 
@@ -387,10 +414,10 @@ sub soldPopup(stockId as String)
     
     m.top.appendChild(popupSoldLabel)
     
-    
-    m.testtimer.control = "start"
-    m.testtimer.duration = 1
-    m.testtimer.observeField("fire", "handleTimerEvent")
+    m.sellPopTimer = m.top.findNode("sellPopTimer")
+    m.sellPopTimer.control = "start"
+    m.sellPopTimer.duration = 1
+    m.sellPopTimer.observeField("fire", "handleTimerEvent")
     m.popupLabel = popupSoldLabel
 end sub
 
@@ -399,7 +426,7 @@ sub buyStock(stockId as String)
         stockLabel = m.top.findNode(stockId)
         priceText = stockLabel.text
         
-        numericText = mid(priceText, 2)
+        numericText = mid(priceText, 15)
         stockPrice = Val(numericText)
 
         moneyLabel = m.top.findNode("moneyLabel")
@@ -460,7 +487,7 @@ sub sellStock(stockId as String)
 
     stockLabel2 = m.top.findNode(stockId)
     priceText2 = stockLabel2.text
-    numericText2 = mid(priceText2, 2)
+    numericText2 = mid(priceText2, 15)
     stockPrice2 = Val(numericText2)
 
     moneyLabel2 = m.top.findNode("MoneyLabel")
