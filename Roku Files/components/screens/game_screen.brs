@@ -281,11 +281,6 @@ sub updateStockPrice(stockId as String, changesLabels as String)
         
         if newPrice < 0 then newPrice = 0 
  
-<<<<<<< Updated upstream
-        stockLabel.text =  "$" + str(newPrice)
-=======
->>>>>>> Stashed changes
-        
 
         if priceChange > 0 then
 

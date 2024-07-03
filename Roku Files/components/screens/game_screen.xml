@@ -3,13 +3,14 @@
   
     <children>
 
+
+
+
     <Poster
         id="background"
-<<<<<<< Updated upstream
-        uri="pkg:/images/background1.png"  
-=======
+        
         uri="pkg:/images/blue.jpg"  
->>>>>>> Stashed changes
+
         translation="[0, 0]"
         width="1920"  
         height="1080"  
