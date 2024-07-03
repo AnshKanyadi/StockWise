@@ -19,7 +19,12 @@ function init()
  
 
     m.home_screen.observeField("category_selected", "onCategorySelected")
-    m.game_screen.observeField("graphbutton_selected", "GraphScreenShow")
+    m.game_screen.observeField("graphbutton1_selected", "GraphScreenShow")
+    m.game_screen.observeField("graphbutton2_selected", "GraphScreenShow")
+    m.game_screen.observeField("graphbutton3_selected", "GraphScreenShow")
+    m.game_screen.observeField("graphbutton4_selected", "GraphScreenShow")
+    m.game_screen.observeField("graphbutton5_selected", "GraphScreenShow")
+    m.game_screen.observeField("graphbutton6_selected", "GraphScreenShow")
     
 
 

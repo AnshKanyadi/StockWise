@@ -4,9 +4,34 @@
     <interface>
     
     <field 
-    id="graphbutton_selected" 
+    id="graphbutton1_selected" 
     type="boolean"
      alias="graph1.buttonSelected"
+      />
+    <field 
+    id="graphbutton2_selected" 
+    type="boolean"
+     alias="graph2.buttonSelected"
+      />
+    <field 
+    id="graphbutton3_selected" 
+    type="boolean"
+     alias="graph3.buttonSelected"
+      />
+    <field 
+    id="graphbutton4_selected" 
+    type="boolean"
+     alias="graph4.buttonSelected"
+      />
+    <field 
+    id="graphbutton5_selected" 
+    type="boolean"
+     alias="graph5.buttonSelected"
+      />
+    <field 
+    id="graphbutton6_selected" 
+    type="boolean"
+     alias="graph6.buttonSelected"
       />
   </interface>
   
@@ -127,6 +152,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/buy_icon.png"
+            focusedIconUri="pkg:/images/buy_icon.png"
         />
 
           <Button
@@ -137,6 +164,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/buy_icon.png"
+            focusedIconUri="pkg:/images/buy_icon.png"
         />
         <Button
             id="stock3a"
@@ -146,6 +175,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/buy_icon.png"
+            focusedIconUri="pkg:/images/buy_icon.png"
         />
         <Button
             id="stock4a"
@@ -155,6 +186,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/buy_icon.png"
+            focusedIconUri="pkg:/images/buy_icon.png"
         />
         <Button
             id="stock5a"
@@ -164,6 +197,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/buy_icon.png"
+            focusedIconUri="pkg:/images/buy_icon.png"
         />
         <Button
             id="stock6a"
@@ -173,6 +208,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/buy_icon.png"
+            focusedIconUri="pkg:/images/buy_icon.png"
         />
 
         <Button
@@ -183,6 +220,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/sell_icon.png"
+            focusedIconUri="pkg:/images/sell_icon.png"
         />
         <Button
             id="stock2sell"
@@ -192,6 +231,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/sell_icon.png"
+            focusedIconUri="pkg:/images/sell_icon.png"
         />
         <Button
             id="stock3sell"
@@ -201,6 +242,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/sell_icon.png"
+            focusedIconUri="pkg:/images/sell_icon.png"
         />
         <Button
             id="stock4sell"
@@ -210,6 +253,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/sell_icon.png"
+            focusedIconUri="pkg:/images/sell_icon.png"
         />
         <Button
             id="stock5sell"
@@ -219,6 +264,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/sell_icon.png"
+            focusedIconUri="pkg:/images/sell_icon.png"
         />
         <Button
             id="stock6sell"
@@ -228,6 +275,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/sell_icon.png"
+            focusedIconUri="pkg:/images/sell_icon.png"
         />
 
         <Button
@@ -238,6 +287,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/graph_icon.png"
+            focusedIconUri="pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -248,6 +299,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/graph_icon.png"
+            focusedIconUri="pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -258,6 +311,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/graph_icon.png"
+            focusedIconUri="pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -268,6 +323,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/graph_icon.png"
+            focusedIconUri="pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -278,6 +335,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/graph_icon.png"
+            focusedIconUri="pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -288,6 +347,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri="pkg:/images/graph_icon.png"
+            focusedIconUri="pkg:/images/graph_icon.png"
         />
 
 
