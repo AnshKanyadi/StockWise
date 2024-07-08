@@ -179,6 +179,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/buy_icon.png"
+            focusedIconUri = "pkg:/images/buy_icon.png"
         />
 
           <Button
@@ -189,6 +191,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/buy_icon.png"
+            focusedIconUri = "pkg:/images/buy_icon.png"
         />
         <Button
             id="stock3a"
@@ -198,6 +202,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/buy_icon.png"
+            focusedIconUri = "pkg:/images/buy_icon.png"
         />
         <Button
             id="stock4a"
@@ -207,6 +213,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/buy_icon.png"
+            focusedIconUri = "pkg:/images/buy_icon.png"
         />
         <Button
             id="stock5a"
@@ -216,6 +224,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/buy_icon.png"
+            focusedIconUri = "pkg:/images/buy_icon.png"
         />
         <Button
             id="stock6a"
@@ -225,6 +235,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/buy_icon.png"
+            focusedIconUri = "pkg:/images/buy_icon.png"
         />
 
         <Button
@@ -235,6 +247,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/sell_icon.png"
+            focusedIconUri = "pkg:/images/sell_icon.png"
         />
         <Button
             id="stock2sell"
@@ -244,6 +258,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/sell_icon.png"
+            focusedIconUri = "pkg:/images/sell_icon.png"
         />
         <Button
             id="stock3sell"
@@ -253,6 +269,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/sell_icon.png"
+            focusedIconUri = "pkg:/images/sell_icon.png"
         />
         <Button
             id="stock4sell"
@@ -262,6 +280,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/sell_icon.png"
+            focusedIconUri = "pkg:/images/sell_icon.png"
         />
         <Button
             id="stock5sell"
@@ -271,6 +291,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/sell_icon.png"
+            focusedIconUri = "pkg:/images/sell_icon.png"
         />
         <Button
             id="stock6sell"
@@ -280,6 +302,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/sell_icon.png"
+            focusedIconUri = "pkg:/images/sell_icon.png"
         />
 
         <Button
@@ -290,6 +314,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/graph_icon.png"
+            focusedIconUri = "pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -300,6 +326,9 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/graph_icon.png"
+            focusedIconUri = "pkg:/images/graph_icon.png"
+            
         />
 
         <Button
@@ -310,6 +339,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/graph_icon.png"
+            focusedIconUri = "pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -320,6 +351,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/graph_icon.png"
+            focusedIconUri = "pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -330,6 +363,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/graph_icon.png"
+            focusedIconUri = "pkg:/images/graph_icon.png"
         />
 
         <Button
@@ -340,6 +375,8 @@
             height="36"
             focusable="true"
             visible="true"
+            iconUri ="pkg:/images/graph_icon.png"
+            focusedIconUri = "pkg:/images/graph_icon.png"
         />
 
 

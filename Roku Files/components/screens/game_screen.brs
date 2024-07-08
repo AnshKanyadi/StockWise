@@ -276,7 +276,7 @@ sub updateStockPrice(stockId as String, changesLabels as String)
         currentPrice = Val(numericText)
         
     
-        priceChange = Rnd(70) - 5 
+        priceChange = Rnd(140) - 70 
 
       
         newPrice = currentPrice + priceChange
