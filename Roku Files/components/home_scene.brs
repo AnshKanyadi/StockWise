@@ -15,6 +15,9 @@ function init()
     m.GraphScreen = m.top.findNode("GraphScreen")
     m.GraphScreen.visible = false
 
+    m.inventory = m.top.findNode("inventory")
+    m.inventory.visible = false
+
  
 
     m.home_screen.observeField("category_selected", "onCategorySelected")
@@ -56,6 +59,15 @@ sub onCategorySelected(obj)
         m.game_screen.setFocus(true)
 
     end if
+
+    if m.buttonIndex = 2 then
+        m.home_screen.visible = false
+        m.inventory.visible = true
+        m.home_screen.setFocus(false)
+        m.inventory.setFocus(true)
+
+    end if
+
 end sub
 function OnKeyEvent(key as String, press as Boolean) as Boolean
 

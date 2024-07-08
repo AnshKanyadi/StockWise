@@ -33,6 +33,7 @@
       <ContentNode id="categories" role="content">
         <ContentNode title="View Market"/>
         <ContentNode title="Take a Tour"/>
+        <ContentNode title="Check Inventory"/>
 
       </ContentNode>
     </RadioButtonList>

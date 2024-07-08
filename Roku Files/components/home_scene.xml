@@ -22,5 +22,11 @@
      visible = "false"
      translation = "[0,0]"
      />
+
+     <inventory
+      id = "inventory"
+      visible = "false"
+      translation = "[0,0]"
+      />
   </children> 
 </component>

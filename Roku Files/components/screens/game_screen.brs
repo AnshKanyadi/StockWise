@@ -339,34 +339,42 @@ end sub
 sub updateList()
     if m.boughtStocks1Label <> invalid
         m.boughtStocks1Label.text = "Apple  x" + str(m.boughtsell1)
+        AddAndSetFields( m.global, { AppleInventory: m.boughtsell1 } )
+        
     else
         print "boughtStocks1Label node not found."
     end if
     if m.boughtStocks2Label <> invalid
         m.boughtStocks2Label.text = "Facebook  x" + str(m.boughtsell2)
+        AddAndSetFields( m.global, { FacebookInventory: m.boughtsell2 } )
     else
         print "boughtStocks2Label node not found."
     end if
     if m.boughtStocks3Label <> invalid
         m.boughtStocks3Label.text = "Google  x" + str(m.boughtsell3)
+        AddAndSetFields( m.global, { GoogleInventory: m.boughtsell3 } )
     else
         print "boughtStocks3Label node not found."
     end if
     if m.boughtStocks4Label <> invalid
         m.boughtStocks4Label.text = "Microsoft  x" + str(m.boughtsell4)
+        AddAndSetFields( m.global, { MicrosoftInventory: m.boughtsell4 } )
     else
         print "boughtStocks4Label node not found."
     end if
     if m.boughtStocks5Label <> invalid
         m.boughtStocks5Label.text = "Netflix  x" + str(m.boughtsell5)
+        AddAndSetFields( m.global, { NetflixInventory: m.boughtsell5 } )
     else
         print "boughtStocks5Label node not found."
     end if
     if m.boughtStocks6Label <> invalid
         m.boughtStocks6Label.text = "Samsung  x" + str(m.boughtsell6)
+        AddAndSetFields( m.global, { SamsungInventory: m.boughtsell6 } )
     else
         print "boughtStocks6Label node not found."
     end if
+    
 end sub
 
 sub showBadPopup(stockId as String)
@@ -448,6 +456,7 @@ sub soldPopup(stockId as String)
 end sub
 
 sub buyStock(stockId as String)
+    
 
         stockLabel = m.top.findNode(stockId)
         priceText = stockLabel.text

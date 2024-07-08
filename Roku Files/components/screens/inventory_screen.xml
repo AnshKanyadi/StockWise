@@ -1,0 +1,27 @@
+
+<component name="inventory" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/screens/inventory_screen.brs" />
+    
+    <children>
+       
+          <Poster
+            id="characterImage"
+            uri="pkg:/images/designer.png"
+            translation="[700, 200]"
+            width="400"
+            height="400"
+        />
+        <Label
+         id="gameLabel" 
+         text="This is the game screen" 
+         translation="[400, 50]" 
+         />
+   
+       <Timer
+  id="StockUpdaterTimer"
+  repeat="true"
+  duration = "1"
+
+/>
+    </children>
+</component>
