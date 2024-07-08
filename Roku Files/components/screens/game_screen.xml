@@ -1,9 +1,42 @@
 <component name="game_screen" extends="Group">
     <script type="text/brightscript" uri="pkg:/components/screens/game_screen.brs" />
+
+
+    <interface>
+
+    <field 
+    id="graphbutton1_selected" 
+    type="boolean"
+     alias="graph1.buttonSelected"
+      />
+    <field 
+    id="graphbutton2_selected" 
+    type="boolean"
+     alias="graph2.buttonSelected"
+      />
+    <field 
+    id="graphbutton3_selected" 
+    type="boolean"
+     alias="graph3.buttonSelected"
+      />
+    <field 
+    id="graphbutton4_selected" 
+    type="boolean"
+     alias="graph4.buttonSelected"
+      />
+    <field 
+    id="graphbutton5_selected" 
+    type="boolean"
+     alias="graph5.buttonSelected"
+      />
+    <field 
+    id="graphbutton6_selected" 
+    type="boolean"
+     alias="graph6.buttonSelected"
+      />
+  </interface>
   
     <children>
-
-
 
 
     <Poster

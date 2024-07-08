@@ -1,0 +1,31 @@
+<component name="GraphScreen" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/screens/GraphScreen.brs" />
+
+
+    <children>
+
+
+        <Poster
+            id="poster"
+            width="720"
+            height="1280" 
+            translation="[500,500]"
+            visible="true" />
+        <Label
+            id="label1"
+            text="This is where the graph will be displayed."
+            translation="[50,50]" />
+        <Timer
+  id="TestTimer"
+  repeat="false"
+  duration = "30"
+
+/>
+
+  
+
+
+
+
+    </children>
+</component>
