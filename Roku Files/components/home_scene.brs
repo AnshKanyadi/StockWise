@@ -97,14 +97,27 @@ function OnKeyEvent(key as String, press as Boolean) as Boolean
                 m.home_screen.callFunc("buttonFocus")
 
                 result = true
-            end if
 
-        else if m.GraphScreen.visible then
-            m.GraphScreen.visible = false 
-            m.game_screen.visible = true
-            
-            m.GraphScreen.setFocus(false)
-            m.game_screen.setFocus(true)
+            else if m.GraphScreen.visible then
+                m.GraphScreen.visible = false 
+                m.game_screen.visible = true
+                
+                m.GraphScreen.setFocus(false)
+                m.game_screen.setFocus(true)
+                m.game_screen.callFunc("buttonFocus")
+
+                result = true
+
+            else if m.inventory.visible then
+                m.inventory.visible = false 
+                m.home_screen.visible = true
+                
+                m.inventory.setFocus(false)
+                m.home_screen.setFocus(true)
+                m.home_screen.callFunc("buttonFocus")
+
+                result = true
+            end if
        
         end if
     end if

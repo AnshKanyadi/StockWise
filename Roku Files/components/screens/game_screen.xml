@@ -126,7 +126,7 @@
           <Poster
             id="stock1"
             uri="pkg:/images/apple.png"
-            translation="[150, 200]"
+            translation="[150, 150]"
             width="400"
             height="200"
         />
@@ -135,7 +135,7 @@
           <Poster
             id="stock2"
             uri="pkg:/images/facebooks.png"
-            translation="[550, 200]"
+            translation="[550, 150]"
             width="400"
             height="200"
         />
@@ -144,7 +144,7 @@
            <Poster
             id="stock3"
             uri="pkg:/images/google.png"
-            translation="[950, 200]"
+            translation="[950, 150]"
             width="400"
             height="200"
         />
@@ -152,7 +152,7 @@
         <Poster
             id="stock4"
             uri="pkg:/images/microsofts.png"
-            translation="[150, 700]"
+            translation="[150, 650]"
             width="400"
             height="200"
         />
@@ -160,7 +160,7 @@
         <Poster
             id="stock5"
             uri="pkg:/images/netflixs.png"
-            translation="[550, 700]"
+            translation="[550, 650]"
             width="400"
             height="200"
         />
@@ -168,14 +168,14 @@
         <Poster
             id="stock6"
             uri="pkg:/images/samsung.png"
-            translation="[950, 700]"
+            translation="[950, 650]"
             width="400"
             height="200"
         />
         <Button
             id="stock1a"
             text="Buy"
-            translation="[100, 400]"
+            translation="[150, 350]"
             width="200"
             height="36"
             focusable="true"
@@ -187,7 +187,7 @@
           <Button
             id="stock2a"
             text="Buy"
-            translation="[500, 400]"
+            translation="[550, 350]"
             width="200"
             height="36"
             focusable="true"
@@ -198,7 +198,7 @@
         <Button
             id="stock3a"
             text="Buy"
-            translation="[900, 400]"
+            translation="[950, 350]"
             width="200"
             height="36"
             focusable="true"
@@ -209,7 +209,7 @@
         <Button
             id="stock4a"
             text="Buy"
-            translation="[150, 900]"
+            translation="[150, 850]"
             width="200"
             height="36"
             focusable="true"
@@ -220,7 +220,7 @@
         <Button
             id="stock5a"
             text="Buy"
-            translation="[550, 900]"
+            translation="[550, 850]"
             width="200"
             height="36"
             focusable="true"
@@ -231,7 +231,7 @@
         <Button
             id="stock6a"
             text="Buy"
-            translation="[950, 900]"
+            translation="[950, 850]"
             width="200"
             height="36"
             focusable="true"
@@ -243,7 +243,7 @@
         <Button
             id="stock1sell"
             text="Sell"
-            translation="[100, 475]"
+            translation="[150, 425]"
             width="200"
             height="36"
             focusable="true"
@@ -254,7 +254,7 @@
         <Button
             id="stock2sell"
             text="Sell"
-            translation="[500, 475]"
+            translation="[550, 425]"
             width="200"
             height="36"
             focusable="true"
@@ -265,7 +265,7 @@
         <Button
             id="stock3sell"
             text="Sell"
-            translation="[900, 475]"
+            translation="[950, 425]"
             width="200"
             height="36"
             focusable="true"
@@ -276,7 +276,7 @@
         <Button
             id="stock4sell"
             text="Sell"
-            translation="[150, 975]"
+            translation="[150, 925]"
             width="200"
             height="36"
             focusable="true"
@@ -287,7 +287,7 @@
         <Button
             id="stock5sell"
             text="Sell"
-            translation="[550, 975]"
+            translation="[550, 925]"
             width="200"
             height="36"
             focusable="true"
@@ -298,7 +298,7 @@
         <Button
             id="stock6sell"
             text="Sell"
-            translation="[950, 975]"
+            translation="[950, 925]"
             width="200"
             height="36"
             focusable="true"
@@ -310,7 +310,7 @@
         <Button
             id="graph1"
             text="More info"
-            translation="[100, 550]"
+            translation="[150, 500]"
             width="200"
             height="36"
             focusable="true"
@@ -322,7 +322,7 @@
         <Button
             id="graph2"
             text="More info"
-            translation="[500, 550]"
+            translation="[550, 500]"
             width="200"
             height="36"
             focusable="true"
@@ -335,7 +335,7 @@
         <Button
             id="graph3"
             text="More info"
-            translation="[900, 550]"
+            translation="[950, 500]"
             width="200"
             height="36"
             focusable="true"
@@ -347,7 +347,7 @@
         <Button
             id="graph4"
             text="More info"
-            translation="[150, 1050]"
+            translation="[150, 1000]"
             width="200"
             height="36"
             focusable="true"
@@ -359,7 +359,7 @@
         <Button
             id="graph5"
             text="More info"
-            translation="[550, 1050]"
+            translation="[550, 1000]"
             width="200"
             height="36"
             focusable="true"
@@ -371,7 +371,7 @@
         <Button
             id="graph6"
             text="More info"
-            translation="[950, 1050]"
+            translation="[950, 1000]"
             width="200"
             height="36"
             focusable="true"
@@ -387,99 +387,99 @@
          <Label
          id="AppleCost" 
          text="Stock Price: $783" 
-         translation="[195, 285]" 
+         translation="[195, 235]" 
          />
           <Label
          id = "stock1Change"
          text = "1%"
-         translation = "[225, 325]"
+         translation = "[225, 275]"
          />
           <Label
          id="FacebookCost" 
          text="Stock Price: $246" 
-         translation="[595, 285]" 
+         translation="[595, 235]" 
          />
           <Label
          id = "stock2Change"
          text = "1%"
-         translation = "[625, 325]"
+         translation = "[625, 275]"
          />
           <Label
          id="GoogleCost" 
          text="Stock Price: $572" 
-         translation="[995, 295]" 
+         translation="[995, 245]" 
          />
           <Label
          id = "stock3Change"
          text = "1%"
-         translation = "[1025, 335]"
+         translation = "[1025, 285]"
          />
           <Label
          id="MicrosoftCost" 
          text="Stock Price: $145" 
-         translation="[195, 785]" 
+         translation="[195, 735]" 
          />
           <Label
          id = "stock4Change"
          text = "1%"
-         translation = "[225, 825]"
+         translation = "[225, 775]"
          />
           <Label
          id="NetflixCost" 
          text="Stock Price: $212" 
-         translation="[595, 795]" 
+         translation="[595, 745]" 
          />
           <Label
          id = "stock5Change"
          text = "1%"
-         translation = "[625, 835]"
+         translation = "[625, 785]"
          />
           <Label
          id="SamsungCost" 
          text="Stock Price: $73" 
-         translation="[995, 785]" 
+         translation="[995, 735]" 
          />
           <Label
          id = "stock6Change"
          text = "1%"
-         translation = "[1025, 825]"
+         translation = "[1025, 775]"
          />
 
         <Label
          id="AppleNum" 
          text="Apple  x" 
          color="0x000000ff"
-         translation="[1500, 675]" 
+         translation="[1500, 625]" 
          />
          <Label
          id="FacebookNum" 
          text="Facebook  x"
          color="0x000000ff"
-         translation="[1500, 725]" 
+         translation="[1500, 675]" 
          />
          <Label
          id="GoogleNum" 
          text="Google  x" 
          color="0x000000ff"
-         translation="[1500, 775]" 
+         translation="[1500, 725]" 
          />
          <Label
          id="MicrosoftNum" 
          text="Microsoft  x" 
          color="0x000000ff"
-         translation="[1500, 825]" 
+         translation="[1500, 775]" 
          />
          <Label
          id="NetflixNum" 
          text="Netflix  x" 
          color="0x000000ff"
-         translation="[1500, 875]" 
+         translation="[1500, 825]" 
          />
          <Label
          id="SamsungNum" 
          text="Samsung  x" 
          color="0x000000ff"
-         translation="[1500, 925]" 
+         translation="[1500, 875]" 
          />
 
     </children>

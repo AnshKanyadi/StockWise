@@ -91,6 +91,7 @@ sub init()
     m.playerLabel.translation = [1637, 61]
 
     m.moneyLabel = m.top.findNode("MoneyLabel")
+    
 
     'm.moneyLabel.translation = [1800, 45]
 
