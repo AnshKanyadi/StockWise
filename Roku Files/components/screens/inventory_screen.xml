@@ -1,27 +1,49 @@
-
-<component name="inventory" extends="Group">
+<component name="inventory" extends="Group" initialFocus="testPosterGrid" >
     <script type="text/brightscript" uri="pkg:/components/screens/inventory_screen.brs" />
-    
+
+
+
     <children>
-       
-          <Poster
-            id="characterImage"
-            uri="pkg:/images/designer.png"
-            translation="[700, 200]"
-            width="400"
-            height="400"
-        />
-        <Label
-         id="gameLabel" 
-         text="This is the game screen" 
-         translation="[400, 50]" 
-         />
-   
-       <Timer
+     <PosterGrid
+      id="testPosterGrid"
+      translation="[32,32]"
+      basePosterSize="[600,270]"
+      itemSpacing="[32,32]"
+      caption1NumLines="1"
+      numColumns="3"
+      numRows="2"
+     >
+
+  <ContentNode role = "content" >
+      <ContentNode hdgridposterurl="pkg:/images/apple.png" SHORTDESCRIPTIONLINE1 ="0"
+      id = "apple"
+      focusable="true"/>
+      <ContentNode hdgridposterurl="pkg:/images/facebooks.png" SHORTDESCRIPTIONLINE1 ="0"
+      id = "facebook"
+      focusable="true"/>
+      <ContentNode hdgridposterurl="pkg:/images/google.png" SHORTDESCRIPTIONLINE1 ="0"
+      id = "google"
+      focusable="true"/>
+      <ContentNode hdgridposterurl="pkg:/images/microsofts.png" SHORTDESCRIPTIONLINE1 ="0"
+      id = "microsoft"
+      focusable="true"/>
+      <ContentNode hdgridposterurl="pkg:/images/netflixs.png" SHORTDESCRIPTIONLINE1 ="0"
+      id = "netflix"
+      focusable="true"/>
+      <ContentNode hdgridposterurl="pkg:/images/samsung.png" SHORTDESCRIPTIONLINE1 ="0"
+      id = "samsung"
+      focusable="true"/>
+  </ContentNode>
+
+   <Timer
   id="StockUpdaterTimer"
   repeat="true"
   duration = "1"
 
+
 />
+
+
+</PosterGrid>
     </children>
 </component>

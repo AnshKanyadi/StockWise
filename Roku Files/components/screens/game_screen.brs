@@ -2,6 +2,9 @@ sub init()
 
 
 
+    sec = CreateObject("roRegistry")
+    m.reg = CreateObject("roRegistrySection", "KingBob")
+
 
 
     m.currentIndex = 0
@@ -46,12 +49,14 @@ sub init()
     m.buttonS5.observeField("buttonSelected", "handleButtonClick_stock5sell")
     m.buttonS6.observeField("buttonSelected", "handleButtonClick_stock6sell")
 
-    m.boughtsell1 = 0
-    m.boughtsell2 = 0
-    m.boughtsell3 = 0
-    m.boughtsell4 = 0
-    m.boughtsell5 = 0
-    m.boughtsell6 = 0
+    m.boughtsell1 = m.reg.Read("Apple").toInt()
+    m.boughtsell2 = m.reg.Read("Facebook").toInt()
+    m.boughtsell3 = m.reg.Read("Google").toInt()
+    m.boughtsell4 = m.reg.Read("Microsoft").toInt()
+    m.boughtsell5 = m.reg.Read("Netflix").toInt()
+    m.boughtsell6 = m.reg.Read("Samsung").toInt()
+
+
 
     m.applePrices = []
     m.facebookPrices = CreateObject("roArray", 5, true)
@@ -117,6 +122,11 @@ sub init()
     m.boughtStocks5Label.font = m.boughtStockFont
     m.boughtStocks6Label.font = m.boughtStockFont
     'm.boughtStocksLabel.font= m.boughtStocksFont
+
+    
+    m.remainingMoney = m.reg.Read("Balance").toInt()
+    m.moneyLabel.text = m.reg.Read("Balance")
+    
 
 end sub
 
@@ -457,7 +467,7 @@ end sub
 
 sub buyStock(stockId as String)
     
-
+        
         stockLabel = m.top.findNode(stockId)
         priceText = stockLabel.text
         
@@ -515,7 +525,14 @@ sub buyStock(stockId as String)
                 showBadPopup("Samsung")
             end if
         end if
-
+        m.reg.Write("Balance", str(m.remainingMoney))
+        m.reg.Write("Apple", str(m.boughtsell1))
+        m.reg.Write("Facebook", str(m.boughtsell2))
+        m.reg.Write("Google", str(m.boughtsell3))
+        m.reg.Write("Microsoft", str(m.boughtsell4))
+        m.reg.Write("Netflix", str(m.boughtsell5))
+        m.reg.Write("Samsung", str(m.boughtsell6))
+    
 end sub
 
 sub sellStock(stockId as String)
@@ -599,5 +616,7 @@ function AddAndSetFields( node as object, aa as object )
     node.setFields( setFields )
     node.addFields( addFields )
   end function
+
+
 
 
