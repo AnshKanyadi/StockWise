@@ -21,12 +21,12 @@ function init()
  
 
     m.home_screen.observeField("category_selected", "onCategorySelected")
-    m.game_screen.observeField("graphbutton1_selected", "GraphScreenShow")
-    m.game_screen.observeField("graphbutton2_selected", "GraphScreenShow")
-    m.game_screen.observeField("graphbutton3_selected", "GraphScreenShow")
-    m.game_screen.observeField("graphbutton4_selected", "GraphScreenShow")
-    m.game_screen.observeField("graphbutton5_selected", "GraphScreenShow")
-    m.game_screen.observeField("graphbutton6_selected", "GraphScreenShow")
+    m.game_screen.observeField("graphbutton1_selected", "GraphScreenShow1")
+    m.game_screen.observeField("graphbutton2_selected", "GraphScreenShow2")
+    m.game_screen.observeField("graphbutton3_selected", "GraphScreenShow3")
+    m.game_screen.observeField("graphbutton4_selected", "GraphScreenShow4")
+    m.game_screen.observeField("graphbutton5_selected", "GraphScreenShow5")
+    m.game_screen.observeField("graphbutton6_selected", "GraphScreenShow6")
 
     m.buttonIndex = -1
 end function
@@ -125,13 +125,82 @@ function OnKeyEvent(key as String, press as Boolean) as Boolean
 
 end function
 
-sub GraphScreenShow()
+function GraphScreenShow1()
+  
     m.game_screen.visible = false
     m.game_screen.setFocus(false)
     m.GraphScreen.visible = true
     m.GraphScreen.setFocus(true)
     ? "showing graph screen"
+   
+
+    
 
 
+end function 
 
-end sub
+function GraphScreenShow2()
+  
+    m.game_screen.visible = false
+    m.game_screen.setFocus(false)
+    m.GraphScreen.visible = true
+    m.GraphScreen.setFocus(true)
+    ? "showing graph screen"
+   
+
+    
+
+
+end function 
+
+function GraphScreenShow3()
+
+    m.game_screen.visible = false
+    m.game_screen.setFocus(false)
+    m.GraphScreen.visible = true
+    m.GraphScreen.setFocus(true)
+    ? "showing graph screen"
+   
+
+    
+
+
+end function 
+
+function GraphScreenShow4()
+    
+    m.game_screen.visible = false
+    m.game_screen.setFocus(false)
+    m.GraphScreen.visible = true
+    m.GraphScreen.setFocus(true)
+    ? "showing graph screen"
+   
+
+    
+
+
+end function 
+
+function GraphScreenShow5()
+   
+    m.game_screen.visible = false
+    m.game_screen.setFocus(false)
+    m.GraphScreen.visible = true
+    m.GraphScreen.setFocus(true)
+    ? "showing graph screen"
+   
+
+    
+
+
+end function 
+
+function GraphScreenShow6()
+    
+    m.game_screen.visible = false
+    m.game_screen.setFocus(false)
+    m.GraphScreen.visible = true
+    m.GraphScreen.setFocus(true)
+    ? "showing graph screen"
+   
+end function

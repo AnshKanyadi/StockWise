@@ -59,12 +59,12 @@ sub init()
 
 
     m.applePrices = []
-    m.facebookPrices = CreateObject("roArray", 5, true)
-    m.googlePrices = CreateObject("roArray", 5, true)
-    m.microsoftPrices = CreateObject("roArray", 5, true)
-    m.netflixPrices = CreateObject("roArray", 5, true)
-    m.samsungPrices = CreateObject("roArray", 5, true)
-    m.applePrices = [100, 105, 110, 115, 120]   
+    m.facebookPrices = []
+    m.googlePrices = []
+    m.microsoftPrices = []
+    m.netflixPrices = []
+    m.samsungPrices = []
+   
     changeFocus(m.currentIndex)
     m.stocktimer = m.top.findNode("stockTimer")
     m.stocktimer.control = "start"
@@ -127,6 +127,7 @@ sub init()
     
     m.remainingMoney = m.reg.Read("Balance").toInt()
     m.moneyLabel.text = m.reg.Read("Balance")
+    AddAndSetFields( m.global, { TotalMoney: m.remainingMoney } )
     
 
 end sub
@@ -343,7 +344,12 @@ sub addPriceToList(pricesList as Object, newPrice as integer)
         pricesList.Delete(0)
     end if
     pricesList.Push(newPrice)
-    AddAndSetFields( m.global, { globalContent: m.applePrices } )
+    AddAndSetFields( m.global, { ApplePrices: m.applePrices } )
+    AddAndSetFields( m.global, { FacebookPrices: m.applePrices } )
+    AddAndSetFields( m.global, { GooglePrices: m.applePrices } )
+    AddAndSetFields( m.global, { MicrosoftPrices: m.applePrices } )
+    AddAndSetFields( m.global, { NetflixPrices: m.applePrices } )
+    AddAndSetFields( m.global, { SamsungPrices: m.applePrices } )
 
 end sub
 
@@ -467,7 +473,7 @@ sub soldPopup(stockId as String)
 end sub
 
 sub buyStock(stockId as String)
-    
+
         
         stockLabel = m.top.findNode(stockId)
         priceText = stockLabel.text
@@ -533,6 +539,7 @@ sub buyStock(stockId as String)
         m.reg.Write("Microsoft", str(m.boughtsell4))
         m.reg.Write("Netflix", str(m.boughtsell5))
         m.reg.Write("Samsung", str(m.boughtsell6))
+        AddAndSetFields( m.global, { TotalMoney: m.remainingMoney } )
     
 end sub
 
@@ -601,6 +608,15 @@ sub sellStock(stockId as String)
     else
         print "MoneyLabel node not found."
     end if
+
+    m.reg.Write("Balance", str(m.remainingMoney))
+    m.reg.Write("Apple", str(m.boughtsell1))
+    m.reg.Write("Facebook", str(m.boughtsell2))
+    m.reg.Write("Google", str(m.boughtsell3))
+    m.reg.Write("Microsoft", str(m.boughtsell4))
+    m.reg.Write("Netflix", str(m.boughtsell5))
+    m.reg.Write("Samsung", str(m.boughtsell6))
+    AddAndSetFields( m.global, { TotalMoney: m.remainingMoney } )
 end sub
 
 function AddAndSetFields( node as object, aa as object )

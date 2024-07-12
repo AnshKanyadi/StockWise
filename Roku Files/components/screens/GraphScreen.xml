@@ -9,15 +9,27 @@
             id="poster"
             width="720"
             height="1280" 
-            translation="[500,500]"
+            translation="[500,200]"
             visible="true" />
+        
+        
+        <Poster
+            id="poster2"
+            width="720"
+            height="1280" 
+            translation="[600,500]"
+            visible="false" />
+
+        
+    
+
         <Label
             id="label1"
             text="This is where the graph will be displayed."
-            translation="[50,50]" />
+            translation="[500,50]" />
         <Timer
   id="TestTimer"
-  repeat="false"
+  repeat="true"
   duration = "30"
 
 />

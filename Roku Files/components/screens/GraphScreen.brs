@@ -3,15 +3,13 @@ function init()
     m.array = m.global.globalContent
     ? "we in here fr"
     label = m.top.findNode("label1")
-    label.text = "Graph For Stock"
-    m.stocktimer = m.top.findNode("TestTimer")
-    m.stocktimer.control = "start"
-    m.stocktimer.observeField("fire", "testTimer")
+    label.text = "Stock History"
+   
     m.booby = 0
-
+    m.top.visible = false
  
    
-    
+    m.top.observeField("visible", "testTimer")
     
 
 
@@ -22,7 +20,14 @@ end function
 
 
 
-sub testTimer()
+function testTimer()
+    ? "inside testTimer"
+
+    m.array = m.global.ApplePrices
+   
+
+    
+   
     while m.array = invalid
         
         sleep(100)
@@ -36,16 +41,18 @@ sub testTimer()
     m.poster = m.top.findNode("poster")
     if m.poster <> invalid
         ? "Setting Poster URI"
-        m.poster.uri = "tmp:/graph.png"
+        m.poster.uri = m.link
         m.poster.visible = true
         m.poster.setFocus(true)
         ? "Poster URI set to tmp:/graph.png"
     else
         ? "Poster node not found"
     end if
+        ? m.array
+    
 
 
-end sub 
+end function 
 
 
 
@@ -53,6 +60,7 @@ end sub
 
 
 sub drawGraph(heights)
+    m.booby = m.booby + 1
     
     ? "Drawing graph"
     
@@ -86,18 +94,20 @@ sub drawGraph(heights)
             penColor = &h0000ffd9 ' Blue color for equal heights
         end if
 
-        ' Draw the line
+    
         bitmap.DrawLine(x1, y1, x2, y2, penColor)
         ? "Drew line from (" + x1.toStr() + ", " + y1.toStr() + ") to (" + x2.toStr() + ", " + y2.toStr() + ") with color " + penColor.toStr()
     end for
 
-    ' Save the bitmap as a PNG file
+    
     ba = bitmap.GetPng(0, 0, posterWidth, posterHeight)
-    result = ba.WriteFile("tmp:/graph.png")
+    m.link = "tmp:/graph" + str(m.booby) + ".png"
+    result = ba.WriteFile(m.link)
     
     if result then
         ? "Bitmap saved as tmp:/graph.png"
     else
         ? "Failed to save bitmap"
     end if
+    bitmap.Finish()
 end sub

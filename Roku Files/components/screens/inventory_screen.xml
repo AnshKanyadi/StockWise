@@ -4,10 +4,19 @@
 
 
     <children>
+    <Poster
+        id="background"
+
+        uri="pkg:/images/inventory.png"
+
+        translation="[0, 0]"
+        width="1920"
+        height="1080"
+    />
      <PosterGrid
       id="testPosterGrid"
-      translation="[32,32]"
-      basePosterSize="[600,270]"
+      translation="[440,230]"
+      basePosterSize="[330,250]"
       itemSpacing="[32,32]"
       caption1NumLines="1"
       numColumns="3"
@@ -35,6 +44,7 @@
       focusable="true"/>
   </ContentNode>
 
+
    <Timer
   id="StockUpdaterTimer"
   repeat="true"
@@ -45,5 +55,10 @@
 
 
 </PosterGrid>
+<Label
+         id="balance"
+         text="This is the balance"
+         translation="[1280, 960]"
+         />
     </children>
 </component>
