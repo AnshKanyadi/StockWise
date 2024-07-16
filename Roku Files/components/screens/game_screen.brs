@@ -4,8 +4,32 @@ sub init()
 
     sec = CreateObject("roRegistry")
     m.reg = CreateObject("roRegistrySection", "KingBob")
+    
+    m.networkTaskApple = CreateObject("roSGNode", "NetworkTask")
+    m.networkTaskApple.observeField("response", "onNetworkResponseApple")
 
+    m.networkTaskGoogle = CreateObject("roSGNode", "NetworkTask")
+    m.networkTaskGoogle.observeField("response", "onNetworkResponseGoogle")
 
+    m.networkTaskMicrosoft = CreateObject("roSGNode", "NetworkTask")
+    m.networkTaskMicrosoft.observeField("response", "onNetworkResponseMicrosoft")
+
+    m.networkTaskMeta = CreateObject("roSGNode", "NetworkTask")
+    m.networkTaskMeta.observeField("response", "onNetworkResponseMeta")
+
+    m.networkTaskNetflix = CreateObject("roSGNode", "NetworkTask")
+    m.networkTaskNetflix.observeField("response", "onNetworkResponseNetflix")
+
+    m.networkTaskAmazon = CreateObject("roSGNode", "NetworkTask")
+    m.networkTaskAmazon.observeField("response", "onNetworkResponseAmazon")
+
+    ' Fetch stock data
+    fetchStockData()
+
+    ' Other initializations...
+
+    ' Fetch stock data
+    fetchStockData()
 
     m.currentIndex = 0
     m.button1 = m.top.findNode("stock1a")
@@ -124,10 +148,11 @@ sub init()
     m.boughtStocks6Label.font = m.boughtStockFont
     'm.boughtStocksLabel.font= m.boughtStocksFont
 
-    
+    m.reg.Write("Balance", "100000")
     m.remainingMoney = m.reg.Read("Balance").toInt()
     m.moneyLabel.text = m.reg.Read("Balance")
     AddAndSetFields( m.global, { TotalMoney: m.remainingMoney } )
+    
     
 
 end sub
@@ -254,12 +279,7 @@ end sub
 
 sub handleStockTimerEvent(event as Object)
   
-    updateStockPrice("AppleCost", "stock1Change")
-    updateStockPrice("FacebookCost", "stock2Change")
-    updateStockPrice("GoogleCost", "stock3Change")
-    updateStockPrice("MicrosoftCost", "stock4Change")
-    updateStockPrice("NetflixCost", "stock5Change")
-    updateStockPrice("SamsungCost", "stock6Change")
+    fetchStockData()
 end sub
 
 function RoundToTwoDecimals(value as Float) as Float
@@ -269,74 +289,7 @@ end function
 
 
 
-sub updateStockPrice(stockId as String, changesLabels as String)
 
-    stockLabel = m.top.findNode(stockId)
-    
-    m.changesLabel = m.top.findNode(changesLabels)
-
-    priceText = stockLabel.text
-
-    changeText = m.changesLabel.text
-    
-
-    if priceText <> invalid and priceText <> "" and changeText <> invalid and changeText <> "" then
- 
-        numericText = mid(priceText, 15)
-        
-    
-        currentPrice = Val(numericText)
-        
-    
-        priceChange = Rnd(140) - 70 
-
-      
-        newPrice = currentPrice + priceChange
-        
-        if(currentPrice <> 0) then
-            m.percentChange = (priceChange / currentPrice) * 100
-            m.percentChange = RoundToTwoDecimals(m.percentChange)
-        end if
-        
-        if newPrice < 0 then newPrice = 0 
- 
-
-        if priceChange > 0 then
-
-            stockLabel.text = "Stock Price: $" + str(newPrice)
-            m.changesLabel.text = "+" + str(priceChange) + "(+" + str(m.percentChange) + "%)"
-            m.changesLabel.color = "0x00FF00"
-
-        else if priceChange < 0 then
-
-            stockLabel.text = "Stock Price: $" + str(newPrice)
-            m.changesLabel.text = " " + str(priceChange) + "(" + str(m.percentChange) + "%)"
-            m.changesLabel.color = "0xFF0000"
-
-        else
-
-            stockLabel.text = "Stock Price: $" + str(newPrice)
-            m.changesLabel.text =  " " + str(priceChange) + "(" + str(m.percentChange) + "%)"
-            m.changesLabel.color = "h0000ffd9"
-        end if
-    else
-        print "Invalid or empty price text:", priceText
-    end if
-
-    if stockId = "AppleCost" then
-        addPriceToList(m.applePrices, newPrice)
-    else if stockId = "FacebookCost" then
-        addPriceToList(m.facebookPrices, newPrice)
-    else if stockId = "GoogleCost" then
-        addPriceToList(m.googlePrices, newPrice)
-    else if stockId = "MicrosoftCost" then
-        addPriceToList(m.microsoftPrices, newPrice)
-    else if stockId = "NetflixCost" then
-        addPriceToList(m.netflixPrices, newPrice)
-    else if stockId = "SamsungCost" then
-        addPriceToList(m.samsungPrices, newPrice)
-    end if
-end sub
 
 sub addPriceToList(pricesList as Object, newPrice as integer)
 
@@ -636,4 +589,122 @@ function AddAndSetFields( node as object, aa as object )
 
 
 
+  sub fetchStockData()
+    m.networkTaskApple.url = "https://stockservernodejs-91a225b4a63c.herokuapp.com/stock/AAPL"
+    m.networkTaskApple.control = "run"
+
+    m.networkTaskGoogle.url = "https://stockservernodejs-91a225b4a63c.herokuapp.com/stock/GOOGL"
+    m.networkTaskGoogle.control = "run"
+
+    m.networkTaskMicrosoft.url = "https://stockservernodejs-91a225b4a63c.herokuapp.com/stock/MSFT"
+    m.networkTaskMicrosoft.control = "run"
+
+    m.networkTaskMeta.url = "https://stockservernodejs-91a225b4a63c.herokuapp.com/stock/META"
+    m.networkTaskMeta.control = "run"
+
+    m.networkTaskNetflix.url = "https://stockservernodejs-91a225b4a63c.herokuapp.com/stock/NFLX"
+    m.networkTaskNetflix.control = "run"
+
+    m.networkTaskAmazon.url = "https://stockservernodejs-91a225b4a63c.herokuapp.com/stock/AMZN"
+    m.networkTaskAmazon.control = "run"
+end sub
+
+sub onNetworkResponseApple()
+    response = m.networkTaskApple.response
+    if response <> invalid and response <> ""
+        jsonResponse = ParseJson(response)
+        if jsonResponse <> invalid
+            stockPrice = jsonResponse.high
+            updateStockPrice("AppleCost", stockPrice)
+        else
+            print "Failed to parse JSON response for Apple"
+        end if
+    else
+        print "Failed to fetch Apple stock data"
+    end if
+end sub
+
+sub onNetworkResponseGoogle()
+    response = m.networkTaskGoogle.response
+    if response <> invalid and response <> ""
+        jsonResponse = ParseJson(response)
+        if jsonResponse <> invalid
+            stockPrice = jsonResponse.high
+            updateStockPrice("GoogleCost", stockPrice)
+        else
+            print "Failed to parse JSON response for Google"
+        end if
+    else
+        print "Failed to fetch Google stock data"
+    end if
+end sub
+
+sub onNetworkResponseMicrosoft()
+    response = m.networkTaskMicrosoft.response
+    if response <> invalid and response <> ""
+        jsonResponse = ParseJson(response)
+        if jsonResponse <> invalid
+            stockPrice = jsonResponse.high
+            updateStockPrice("MicrosoftCost", stockPrice)
+        else
+            print "Failed to parse JSON response for Microsoft"
+        end if
+    else
+        print "Failed to fetch Microsoft stock data"
+    end if
+end sub
+
+sub onNetworkResponseMeta()
+    response = m.networkTaskMeta.response
+    if response <> invalid and response <> ""
+        jsonResponse = ParseJson(response)
+        if jsonResponse <> invalid
+            stockPrice = jsonResponse.high
+            updateStockPrice("FacebookCost", stockPrice)
+        else
+            print "Failed to parse JSON response for Meta"
+        end if
+    else
+        print "Failed to fetch Meta stock data"
+    end if
+end sub
+
+sub onNetworkResponseNetflix()
+    response = m.networkTaskNetflix.response
+    if response <> invalid and response <> ""
+        jsonResponse = ParseJson(response)
+        if jsonResponse <> invalid
+            stockPrice = jsonResponse.high
+            updateStockPrice("NetflixCost", stockPrice)
+        else
+            print "Failed to parse JSON response for Netflix"
+        end if
+    else
+        print "Failed to fetch Netflix stock data"
+    end if
+end sub
+
+sub onNetworkResponseAmazon()
+    response = m.networkTaskAmazon.response
+    if response <> invalid and response <> ""
+        jsonResponse = ParseJson(response)
+        if jsonResponse <> invalid
+            stockPrice = jsonResponse.high
+            updateStockPrice("SamsungCost", stockPrice)
+        else
+            print "Failed to parse JSON response for Amazon"
+        end if
+    else
+        print "Failed to fetch Amazon stock data"
+    end if
+end sub
+
+sub updateStockPrice(stockId as String, stockPrice as String)
+    stockLabel = m.top.findNode(stockId)
+    if stockLabel <> invalid
+        stockLabel.text = "Stock Price: $" + stockPrice
+    else
+        print stockId + " node not found."
+    end if
+end sub
 
