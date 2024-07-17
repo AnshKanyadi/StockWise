@@ -68,7 +68,7 @@ sub init()
     m.inventory = m.top.findNode("inventory")
 
 
-    m.inventory.observeField("buttonSelected", "handleButtonClick_stock1sell")
+    
     m.buttonG1.observeField("buttonSelected", "handleButtonClick_stock1sell")
     m.buttonG2.observeField("buttonSelected", "handleButtonClick_stock2sell")
     m.buttonG3.observeField("buttonSelected", "handleButtonClick_stock3sell")

@@ -27,7 +27,7 @@ function init()
     m.game_screen.observeField("graphbutton4_selected", "GraphScreenShow4")
     m.game_screen.observeField("graphbutton5_selected", "GraphScreenShow5")
     m.game_screen.observeField("graphbutton6_selected", "GraphScreenShow6")
-    m.game_screen.observeField("inventory_screen", "InventoryScreenShow6")
+    m.game_screen.observeField("inventory_selected", "InventoryScreenShow")
 
     m.buttonIndex = -1
 end function
