@@ -15,8 +15,8 @@ function init()
     m.GraphScreen = m.top.findNode("GraphScreen")
     m.GraphScreen.visible = false
 
-    m.inventory = m.top.findNode("inventory")
-    m.inventory.visible = false
+    m.inventorys = m.top.findNode("inventory")
+    m.inventorys.visible = false
 
  
 
@@ -27,6 +27,7 @@ function init()
     m.game_screen.observeField("graphbutton4_selected", "GraphScreenShow4")
     m.game_screen.observeField("graphbutton5_selected", "GraphScreenShow5")
     m.game_screen.observeField("graphbutton6_selected", "GraphScreenShow6")
+    m.game_screen.observeField("inventory_screen", "InventoryScreenShow6")
 
     m.buttonIndex = -1
 end function
@@ -57,14 +58,6 @@ sub onCategorySelected(obj)
         m.home_screen.setFocus(false)
         m.tutorial.setFocus(false)
         m.game_screen.setFocus(true)
-
-    end if
-
-    if m.buttonIndex = 2 then
-        m.home_screen.visible = false
-        m.inventory.visible = true
-        m.home_screen.setFocus(false)
-        m.inventory.setFocus(true)
 
     end if
 
@@ -108,11 +101,11 @@ function OnKeyEvent(key as String, press as Boolean) as Boolean
 
                 result = true
 
-            else if m.inventory.visible then
-                m.inventory.visible = false 
+            else if m.inventorys.visible then
+                m.inventorys.visible = false 
                 m.home_screen.visible = true
                 
-                m.inventory.setFocus(false)
+                m.inventorys.setFocus(false)
                 m.home_screen.setFocus(true)
                 m.home_screen.callFunc("buttonFocus")
 
@@ -202,5 +195,15 @@ function GraphScreenShow6()
     m.GraphScreen.visible = true
     m.GraphScreen.setFocus(true)
     ? "showing graph screen"
+   
+end function
+
+function InventoryScreenShow()
+    
+    m.game_screen.visible = false
+    m.game_screen.setFocus(false)
+    m.inventorys.visible = true
+    m.inventorys.setFocus(true)
+    ? "showing inventory screen"
    
 end function

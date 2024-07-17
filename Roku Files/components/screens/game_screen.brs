@@ -65,7 +65,10 @@ sub init()
     m.buttonG4 = m.top.findNode("graph4")
     m.buttonG5 = m.top.findNode("graph5")
     m.buttonG6 = m.top.findNode("graph6")
+    m.inventory = m.top.findNode("inventory")
 
+
+    m.inventory.observeField("buttonSelected", "handleButtonClick_stock1sell")
     m.buttonG1.observeField("buttonSelected", "handleButtonClick_stock1sell")
     m.buttonG2.observeField("buttonSelected", "handleButtonClick_stock2sell")
     m.buttonG3.observeField("buttonSelected", "handleButtonClick_stock3sell")
@@ -94,15 +97,7 @@ sub init()
     m.stocktimer.control = "start"
     m.stocktimer.observeField("fire", "handleStockTimerEvent")
     m.remainingMoney = 10000 ' Initialize remaining money to $10000
-    m.boughtStocksLabel = m.top.findNode("boughtStocksLabel")
-    m.boughtStocksLabel.text = "Bought Stocks:"
-
-    m.boughtStocks1Label = m.top.findNode("AppleNum")
-    m.boughtStocks2Label = m.top.findNode("FacebookNum")
-    m.boughtStocks3Label = m.top.findNode("GoogleNum")
-    m.boughtStocks4Label = m.top.findNode("MicrosoftNum")
-    m.boughtStocks5Label = m.top.findNode("NetflixNum")
-    m.boughtStocks6Label = m.top.findNode("SamsungNum")
+   
     updateList()
     '
     'font section
@@ -132,20 +127,13 @@ sub init()
     m.sFont.uri = "pkg:/fonts/LoveloBlack.otf"
     m.sFont.size = 42
     
-    m.boughtStockFont = CreateObject("roSGNode", "Font")
-    m.boughtStockFont.uri = "pkg:/fonts/MontserratR.ttf"
-    m.boughtStockFont.size = 40
+  
 
     'setting fonts
     m.gameLabel.font = m.sFont
     m.moneyLabel.font = m.balanceFont
     m.playerLabel.font = m.balanceFont
-    m.boughtStocks1Label.font = m.boughtStockFont
-    m.boughtStocks2Label.font = m.boughtStockFont
-    m.boughtStocks3Label.font = m.boughtStockFont
-    m.boughtStocks4Label.font = m.boughtStockFont
-    m.boughtStocks5Label.font = m.boughtStockFont
-    m.boughtStocks6Label.font = m.boughtStockFont
+   
     'm.boughtStocksLabel.font= m.boughtStocksFont
 
     m.reg.Write("Balance", "100000")
@@ -159,32 +147,72 @@ end sub
 
 sub onKeyEvent(key as String, press as Boolean) as Boolean
     if press then
+      if m.currentIndex = 3 and key <> "ok" then
         if key = "right" then
-            m.currentIndex = (m.currentIndex + 1) mod 18
+            m.currentIndex = (m.currentIndex + 1) mod 4
             changeFocus(m.currentIndex)
             return true
         else if key = "left" then
-            m.currentIndex = (m.currentIndex - 1 + 18) mod 18
+            m.currentIndex = (m.currentIndex - 1 + 4) mod 4
             changeFocus(m.currentIndex)
             return true
         else if key = "up" then
-            m.currentIndex = (m.currentIndex - 3 + 18) mod 18
+            m.currentIndex = 3
             changeFocus(m.currentIndex)
             return true
-        else if key = "down" then
-            m.currentIndex = (m.currentIndex + 3) mod 18
+        else if key = "down" then 
+            m.currentIndex = 3
             changeFocus(m.currentIndex)
             return true
         end if
     end if
-    return false
+    if m.currentIndex > 3 then
+        if key = "right" then
+            m.currentIndex = (m.currentIndex + 1) mod 19
+            changeFocus(m.currentIndex)
+            return true
+        else if key = "left" then
+            m.currentIndex = (m.currentIndex - 1 + 19) mod 19
+            changeFocus(m.currentIndex)
+            return true
+        else if key = "up" then
+            m.currentIndex = (m.currentIndex - 3 + 19) mod 19
+            changeFocus(m.currentIndex)
+            return true
+        else if key = "down" then
+            m.currentIndex = (m.currentIndex + 3) mod 19
+            changeFocus(m.currentIndex)
+            return true
+        end if
+else
+        if key = "right" then
+            m.currentIndex = (m.currentIndex + 1) mod 4
+            changeFocus(m.currentIndex)
+            return true
+        else if key = "left" then
+            m.currentIndex = (m.currentIndex - 1 + 4) mod 4
+            changeFocus(m.currentIndex)
+            return true
+        else if key = "up" then
+            m.currentIndex = (m.currentIndex - 4 + 19) mod 19
+            changeFocus(m.currentIndex)
+            return true
+        else if key = "down" then
+            m.currentIndex = (m.currentIndex + 4) mod 19
+            changeFocus(m.currentIndex)
+            return true
+        end if
+    end if
+    end if
+return false
 end sub
+    
 
 sub changeFocus(index as Integer)
-    buttons = ["stock1a", "stock2a", "stock3a", "stock1sell", "stock2sell", "stock3sell", "graph1", "graph2", "graph3", "stock4a", "stock5a","stock6a","stock4sell","stock5sell","stock6sell",
+    buttons = ["stock1a", "stock2a", "stock3a", "inventory", "stock1sell", "stock2sell", "stock3sell", "graph1", "graph2", "graph3", "stock4a", "stock5a","stock6a","stock4sell","stock5sell","stock6sell",
     "graph4", "graph5", "graph6"]
     
-    for i = 0 to 17
+    for i = 0 to 18
         button = m.top.findNode(buttons[i])
         if i = index then
             button.setFocus(true)
@@ -307,43 +335,13 @@ sub addPriceToList(pricesList as Object, newPrice as integer)
 end sub
 
 sub updateList()
-    if m.boughtStocks1Label <> invalid
-        m.boughtStocks1Label.text = "Apple  x" + str(m.boughtsell1)
+    
         AddAndSetFields( m.global, { AppleInventory: m.boughtsell1 } )
-        
-    else
-        print "boughtStocks1Label node not found."
-    end if
-    if m.boughtStocks2Label <> invalid
-        m.boughtStocks2Label.text = "Facebook  x" + str(m.boughtsell2)
         AddAndSetFields( m.global, { FacebookInventory: m.boughtsell2 } )
-    else
-        print "boughtStocks2Label node not found."
-    end if
-    if m.boughtStocks3Label <> invalid
-        m.boughtStocks3Label.text = "Google  x" + str(m.boughtsell3)
         AddAndSetFields( m.global, { GoogleInventory: m.boughtsell3 } )
-    else
-        print "boughtStocks3Label node not found."
-    end if
-    if m.boughtStocks4Label <> invalid
-        m.boughtStocks4Label.text = "Microsoft  x" + str(m.boughtsell4)
         AddAndSetFields( m.global, { MicrosoftInventory: m.boughtsell4 } )
-    else
-        print "boughtStocks4Label node not found."
-    end if
-    if m.boughtStocks5Label <> invalid
-        m.boughtStocks5Label.text = "Netflix  x" + str(m.boughtsell5)
         AddAndSetFields( m.global, { NetflixInventory: m.boughtsell5 } )
-    else
-        print "boughtStocks5Label node not found."
-    end if
-    if m.boughtStocks6Label <> invalid
-        m.boughtStocks6Label.text = "Samsung  x" + str(m.boughtsell6)
         AddAndSetFields( m.global, { SamsungInventory: m.boughtsell6 } )
-    else
-        print "boughtStocks6Label node not found."
-    end if
     
 end sub
 
@@ -466,8 +464,6 @@ sub buyStock(stockId as String)
             else
                 print "MoneyLabel node not found."
             end if
-            
-            m.boughtStocksLabel.text = m.boughtStocksLabel.text + Chr(10) + stockId
 
             
         else

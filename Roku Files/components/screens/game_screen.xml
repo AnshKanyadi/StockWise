@@ -34,6 +34,11 @@
     type="boolean"
      alias="graph6.buttonSelected"
       />
+    <field 
+    id="inventory_selected"
+    type="boolean"
+    alias="inventory.buttonSelected"
+    />
   </interface>
   
     <children>
@@ -86,12 +91,6 @@
          
          
 
-    />
-
-    <Label
-         id="BoughtStocksLabel" 
-         text="N/A &#10;" 
-         translation="[1500, 600]"
     />
 
     <Timer
@@ -380,6 +379,18 @@
             focusedIconUri = "pkg:/images/graph_icon.png"
         />
 
+        <Button
+        id="inventory"
+        text="Check Inventory"
+        translation="[1450, 125]"
+        width="200"
+        height="36"
+        focusable="true"
+        visible="true"
+        iconUri="pkg:/images/BACKPACK.png"
+        focusedIconUri="pkg:/images/BACKPACK.png"
+        />
+
 
 
         
@@ -443,43 +454,6 @@
          id = "stock6Change"
          text = "1%"
          translation = "[1025, 775]"
-         />
-
-        <Label
-         id="AppleNum" 
-         text="Apple  x" 
-         color="0x000000ff"
-         translation="[1500, 625]" 
-         />
-         <Label
-         id="FacebookNum" 
-         text="Facebook  x"
-         color="0x000000ff"
-         translation="[1500, 675]" 
-         />
-         <Label
-         id="GoogleNum" 
-         text="Google  x" 
-         color="0x000000ff"
-         translation="[1500, 725]" 
-         />
-         <Label
-         id="MicrosoftNum" 
-         text="Microsoft  x" 
-         color="0x000000ff"
-         translation="[1500, 775]" 
-         />
-         <Label
-         id="NetflixNum" 
-         text="Netflix  x" 
-         color="0x000000ff"
-         translation="[1500, 825]" 
-         />
-         <Label
-         id="SamsungNum" 
-         text="Samsung  x" 
-         color="0x000000ff"
-         translation="[1500, 875]" 
          />
 
     </children>
