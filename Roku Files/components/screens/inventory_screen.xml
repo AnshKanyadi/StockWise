@@ -39,7 +39,7 @@
       <ContentNode hdgridposterurl="pkg:/images/netflixs.png" SHORTDESCRIPTIONLINE1 ="0"
       id = "netflix"
       focusable="true"/>
-      <ContentNode hdgridposterurl="pkg:/images/samsung.png" SHORTDESCRIPTIONLINE1 ="0"
+      <ContentNode hdgridposterurl="pkg:/images/amazon.png" SHORTDESCRIPTIONLINE1 ="0"
       id = "samsung"
       focusable="true"/>
   </ContentNode>

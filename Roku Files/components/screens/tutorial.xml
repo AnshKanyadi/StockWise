@@ -1,39 +1,64 @@
 
 <component name="tutorial" extends="Group">
     <script type="text/brightscript" uri="pkg:/components/screens/tutorial.brs" />
-    
+    <interface>
+        <field id = "label_button_pressed" type="int" alwaysnotify="true" alias="label_button.buttonSelected"/>
+        <field id = "screen_button_pressed" type="int" alwaysnotify="true" alias="screen_button.buttonSelected"/>
+    </interface>
     <children>
        
-          <Poster
+        <Poster
             id="characterImage"
-            uri="pkg:/images/designer.png"
-            translation="[700, 200]"
-            width="400"
-            height="400"
+            uri="pkg:/images/StockShark.png"
+            translation="[260, 300]"
+            width="500"
+            height="500"
+        />
+        <Poster
+            id="textBox"
+            uri="pkg:/images/grey-box.png"
+            translation="[150, 800]"
+            visible = "true"
+            width="1620"
+            height = "250"
+        />
+        <Poster
+            id="images"
+            uri="pkg:/images/bigCompanies.png"
+            translation="[850, 200]"
+            visible = "false"
+            width="800"
+            height = "500"
         />
         <Label
          id="gameLabel" 
          text="This is the game screen" 
-         translation="[400, 50]" 
+         width="1920"
+         horizAlign="left"
+         translation="[200, 950]"
+         />
+         <Label
+            id="stockSharkLabel"
+            text="Stock Shark"
+            translation="[200, 850]"
          />
         <Button
-            id="button1"
-            text="Nice to meet you!"
-            translation="[700, 700]"
+            id="label_button"
+            text="Next!"
+            translation="[1250, 835]"
             width="300"
             height="36"
             focusable="true"
             visible="true"
         />
         <Button
-            id="button2"
-            text="So, what are stocks?"
-            translation="[700, 750]"
+            id="screen_button"
+            text="Next!"
+            translation="[1250, 835]"
             width="300"
             height="36"
             focusable="true"
-            visible="true"
+            visible = "false"
         />
-    
     </children>
 </component>

@@ -116,6 +116,13 @@
   duration = "5"
   
 />
+<Poster
+            id="StockShark"
+            uri="pkg:/images/StockShark.png"
+            translation="[1450, 650]"
+            width="350"
+            height="350"
+        />
 
 
    
@@ -166,7 +173,7 @@
 
         <Poster
             id="stock6"
-            uri="pkg:/images/samsung.png"
+            uri="pkg:/images/amazon.png"
             translation="[950, 650]"
             width="400"
             height="200"
@@ -382,7 +389,7 @@
         <Button
         id="inventory"
         text="Check Inventory"
-        translation="[1450, 125]"
+        translation="[1450, 350]"
         width="200"
         height="36"
         focusable="true"
@@ -402,7 +409,7 @@
          />
           <Label
          id = "stock1Change"
-         text = "1%"
+         text = "0%"
          translation = "[225, 275]"
          />
           <Label
@@ -412,7 +419,7 @@
          />
           <Label
          id = "stock2Change"
-         text = "1%"
+         text = "0%"
          translation = "[625, 275]"
          />
           <Label
@@ -422,7 +429,7 @@
          />
           <Label
          id = "stock3Change"
-         text = "1%"
+         text = "0%"
          translation = "[1025, 285]"
          />
           <Label
@@ -432,7 +439,7 @@
          />
           <Label
          id = "stock4Change"
-         text = "1%"
+         text = "0%"
          translation = "[225, 775]"
          />
           <Label
@@ -442,7 +449,7 @@
          />
           <Label
          id = "stock5Change"
-         text = "1%"
+         text = "0%"
          translation = "[625, 785]"
          />
           <Label
@@ -452,7 +459,7 @@
          />
           <Label
          id = "stock6Change"
-         text = "1%"
+         text = "0%"
          translation = "[1025, 775]"
          />
 

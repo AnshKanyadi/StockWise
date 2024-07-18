@@ -28,5 +28,10 @@
       visible = "false"
       translation = "[0,0]"
       />
+       <one_screen
+      id = "one_screen"
+      visible = "false"
+      translation = "[0,0]"
+      />
   </children> 
 </component>

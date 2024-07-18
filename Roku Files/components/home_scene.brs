@@ -17,6 +17,7 @@ function init()
 
     m.inventorys = m.top.findNode("inventory")
     m.inventorys.visible = false
+    m.one_screen = m.top.findNode("one_screen")
 
  
 
@@ -28,6 +29,8 @@ function init()
     m.game_screen.observeField("graphbutton5_selected", "GraphScreenShow5")
     m.game_screen.observeField("graphbutton6_selected", "GraphScreenShow6")
     m.game_screen.observeField("inventory_selected", "InventoryScreenShow")
+    m.tutorial.observeField("screen_button_pressed", "onNextButtonSelected")
+    m.one_screen.observeField("screen_button_pressed", "gameScreenShow")
 
     m.buttonIndex = -1
 end function
@@ -207,3 +210,17 @@ function InventoryScreenShow()
     ? "showing inventory screen"
    
 end function
+
+sub onNextButtonSelected()
+    ? "TEST"
+    m.tutorial.visible = false
+    m.game_screen.visible = false
+    m.one_screen.visible = true
+    m.one_screen.setFocus(true)
+end sub
+
+sub gameScreenShow()
+    m.one_screen.visible = false
+    m.game_screen.visible = true
+    m.game_screen.setFocus(true)
+end sub

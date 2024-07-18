@@ -1,0 +1,64 @@
+
+<component name="one_screen" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/screens/one_screen.brs" />
+    <interface>
+        <field id = "label_button_pressed" type="int" alwaysnotify="true" alias="label_button.buttonSelected"/>
+        <field id = "screen_button_pressed" type="int" alwaysnotify="true" alias="screen_button.buttonSelected"/>
+    </interface>
+    <children>
+       
+        <Poster
+            id="characterImage"
+            uri="pkg:/images/StockShark.png"
+            translation="[260, 530]"
+            width="350"
+            height="350"
+        />
+        <Poster
+            id="textBox"
+            uri="pkg:/images/grey-box.png"
+            translation="[150, 880]"
+            visible = "true"
+            width="1620"
+            height = "175"
+        />
+        <Poster
+            id="images"
+            uri="pkg:/images/rokuscreen.jpg"
+            translation="[700, 125]"
+            visible = "true"
+            width="1100"
+            height = "725"
+        />
+        <Label
+         id="gameLabel" 
+         text="This is the game screen" 
+         width="1920"
+         horizAlign="left"
+         translation="[200, 990]"
+         />
+         <Label
+            id="stockSharkLabel"
+            text="Stock Shark"
+            translation="[200, 915]"
+         />
+        <Button
+            id="label_button"
+            text="Next!"
+            translation="[1250, 915]"
+            width="300"
+            height="36"
+            focusable="true"
+            visible="true"
+        />
+        <Button
+            id="screen_button"
+            text="Next!"
+            translation="[1250, 915]"
+            width="300"
+            height="36"
+            focusable="true"
+            visible = "false"
+        />
+    </children>
+</component>

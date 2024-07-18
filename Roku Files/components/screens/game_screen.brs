@@ -83,6 +83,27 @@ sub init()
     m.boughtsell5 = m.reg.Read("Netflix").toInt()
     m.boughtsell6 = m.reg.Read("Samsung").toInt()
 
+    m.lastPriceApple = 0
+    m.lastPriceFacebook = 0
+    m.lastPriceGoogle = 0
+    m.lastPriceMicrosoft = 0
+    m.lastPriceNetflix = 0
+    m.lastPriceSamsung = 0
+
+    m.priceChangeApple = 0
+    m.priceChangeFacebook = 0
+    m.priceChangeGoogle = 0
+    m.priceChangeMicrosft = 0
+    m.priceChangeNetflix = 0
+    m.priceChangeSamsung = 0
+
+    m.appleChange = m.top.findNode("stock1Change")
+    m.facebookChange = m.top.findNode("stock2Change")
+    m.googleChange = m.top.findNode("stock3Change")
+    m.microsoftChange = m.top.findNode("stock4Change")
+    m.netflixChange = m.top.findNode("stock5Change")
+    m.samsungChange = m.top.findNode("stock6Change")
+
 
 
     m.applePrices = []
@@ -696,9 +717,116 @@ sub onNetworkResponseAmazon()
 end sub
 
 sub updateStockPrice(stockId as String, stockPrice as String)
+
     stockLabel = m.top.findNode(stockId)
+    m.changes = 0
+    m.percentc = 0
     if stockLabel <> invalid
-        stockLabel.text = "Stock Price: $" + stockPrice
+        bob = Left(stockPrice, len(stockPrice)-2)
+
+        last = Right(stockLabel.text, 6)
+
+        if stockId = "SamsungCost" then
+
+            m.samsungChange = m.top.findNode("stock6Change")
+
+            m.changes = bob.toFloat() - last.toFloat()
+            m.changes = RoundToTwoDecimals(m.changes)
+
+            m.percent = (m.changes / bob.toFloat()) * 100
+            m.percent = RoundToTwoDecimals(m.percent)
+            if m.changes > 0 then
+                m.samsungChange.text = "+" + str(m.changes) + "(+" + str(m.percent) + "%)"
+            else
+                m.samsungChange.text = " " + str(m.changes) + "(" + str(m.percent) + "%)"
+            end if
+
+
+        end if
+        if stockId = "AppleCost" then
+
+            m.appleChange = m.top.findNode("stock1Change")
+
+            m.changes = bob.toFloat() - last.toFloat()
+            m.changes = RoundToTwoDecimals(m.changes)
+
+            m.percent = (m.changes / bob.toFloat()) * 100
+            m.percent = RoundToTwoDecimals(m.percent)
+            if m.changes > 0 then
+                m.appleChange.text = "+" + str(m.changes) + "(+" + str(m.percent) + "%)"
+            else
+                m.appleChange.text = " " + str(m.changes) + "(" + str(m.percent) + "%)"
+            end if
+
+        end if
+        if stockId = "FacebookCost" then
+    
+            m.facebookChange = m.top.findNode("stock2Change")
+
+            m.changes = bob.toFloat() - last.toFloat()
+            m.changes = RoundToTwoDecimals(m.changes)
+
+            m.percent = (m.changes / bob.toFloat()) * 100
+            m.percent = RoundToTwoDecimals(m.percent)
+            if m.changes > 0 then
+                m.facebookChange.text = "+" + str(m.changes) + "(+" + str(m.percent) + "%)"
+            else
+                m.facebookChange.text = " " + str(m.changes) + "(" + str(m.percent) + "%)"
+            end if
+
+        end if
+        if stockId = "GoogleCost" then
+    
+            m.googleChange = m.top.findNode("stock3Change")
+
+            m.changes = bob.toFloat() - last.toFloat()
+            m.changes = RoundToTwoDecimals(m.changes)
+
+            m.percent = (m.changes / bob.toFloat()) * 100
+            m.percent = RoundToTwoDecimals(m.percent)
+            if m.changes > 0 then
+                m.googleChange.text = "+" + str(m.changes) + "(+" + str(m.percent) + "%)"
+            else
+                m.googleChange.text = " " + str(m.changes) + "(" + str(m.percent) + "%)"
+            end if
+
+        end if
+        if stockId = "MicrosoftCost" then
+    
+            m.microsoftChange = m.top.findNode("stock4Change")
+
+            m.changes = bob.toFloat() - last.toFloat()
+            m.changes = RoundToTwoDecimals(m.changes)
+
+            m.percent = (m.changes / bob.toFloat()) * 100
+            m.percent = RoundToTwoDecimals(m.percent)
+            if m.changes > 0 then
+                m.microsoftChange.text = "+" + str(m.changes) + "(+" + str(m.percent) + "%)"
+            else
+                m.microsoftChange.text = " " + str(m.changes) + "(" + str(m.percent) + "%)"
+            end if
+
+        end if
+        if stockId = "NetflixCost" then
+    
+            m.netflixChange = m.top.findNode("stock5Change")
+
+            m.changes = bob.toFloat() - last.toFloat()
+            m.changes = RoundToTwoDecimals(m.changes)
+
+            m.percent = (m.changes / bob.toFloat()) * 100
+            m.percent = RoundToTwoDecimals(m.percent)
+            if m.changes > 0 then
+                m.netflixChange.text = "+" + str(m.changes) + "(+" + str(m.percent) + "%)"
+            else
+                m.netflixChange.text = " " + str(m.changes) + "(" + str(m.percent) + "%)"
+            end if
+
+        end if
+       
+
+
+        stockLabel.text = "Stock Price: $" + bob
     else
         print stockId + " node not found."
     end if
